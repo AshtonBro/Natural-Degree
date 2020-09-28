@@ -66,3 +66,12 @@ for (let i = 0; i < 200; i++) {
 }
 
 //? Задание 5: Напишите функцию, показывающую текущий день недели в коротком формате: пн, вт и т.д.
+(function getDayOfWeek() {
+    let date = new Date();
+    return console.log(date.toLocaleString('ru', {
+        weekday: 'short'
+    }));
+    //let date = new Date().getDate();
+    // let daysArray = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+    // return console.log(daysArray[date]);
+}());
