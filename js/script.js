@@ -11,7 +11,7 @@ while (++startIndex < endIndex) {
 
 //? Задание 2: Напишите функцию возведения натурального числа x в степень n.
 const isNaturalNumber = (num) => {
-    if (num > 0 && (num % 1) === 0) {
+    if (num => 0 && (num % 1) === 0) {
         return true;
     }
     return false;
@@ -30,7 +30,7 @@ const naturalDegree = (naturalNum, degree) => {
     return false;
 };
 
-console.log(naturalDegree(3, 3));
+console.log(naturalDegree(5, 2));
 
 //? Задание 3: Палиндром — слово, предложение или последовательность символов, которая абсолютно одинаково читается как в привычном направлении, так и в обратном. К примеру, “Anna” — это палиндром, а “table” и “John” — нет.
 const isPalindrome = (text) => {
@@ -46,27 +46,23 @@ console.log(isPalindrome('Anna'));
 
 //? Задание 4: Напишите функцию,  которая в зависимости от переданного в нее целочисленного аргумента n, будет выводить слово «товар» в нужной форме («12 товаров», но «22 товара»).
 const isDeclensions = (num) => {
-    num = num % 100;
-    if (num <= 14 && num >= 11) {
-        console.log(num + ": товаров");
+    if (isNaturalNumber(num)) {
+        let num2 = num % 10;
+        if (num > 10 && num < 20 || num === 0) {
+            return "товаров";
+        }
+        if (num2 > 1 && num2 < 5) {
+            return "товара";
+        }
+        if (num2 === 1) {
+            return "товар";
+        }
+        return "товаров";
     }
-
-};
-
-function declension(oneNominative, severalGenitive, severalNominative, number) {
-    number = number % 100;
-
-    return (number <= 14 && number >= 11) ?
-        severalGenitive : (number %= 10) < 5 ? number > 2 ? severalNominative :
-        number === 1 ?
-        oneNominative :
-        number === 0 ?
-        severalGenitive :
-        severalNominative //number === 2
-        :
-        severalGenitive;
 };
 
 for (let i = 0; i < 200; i++) {
     console.log(i + ": " + isDeclensions(i));
 }
+
+//? Задание 5: Напишите функцию, показывающую текущий день недели в коротком формате: пн, вт и т.д.
