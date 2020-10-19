@@ -336,29 +336,29 @@ let testUser = makeUser();
 
 console.log(testUser.ref);
 
-// let calculator = {
-//     firstNum: 0,
-//     secondNum: 0,
-//     total: 0,
-//     read() {
-//          this.firstNum = +prompt("Введите число?", "5");
-//          this.secondNum = +prompt("Введите ещё одно?", "18"); 
-//     },
-//     sum() {
-//         this.total = this.firstNum + this.secondNum;
-//     },
-//     mul() {
-//         return this.firstNum * this.secondNum;
-//     },
-// }
+let calculator = {
+    firstNum: 0,
+    secondNum: 0,
+    total: 0,
+    read() {
+         this.firstNum = +prompt("Введите число?", "5");
+         this.secondNum = +prompt("Введите ещё одно?", "18"); 
+    },
+    sum() {
+        this.total = this.firstNum + this.secondNum;
+    },
+    mul() {
+        return this.firstNum * this.secondNum;
+    },
+}
 
-// calculator.read();
-// calculator.sum();
-// console.log(calculator.mul());
+calculator.read();
+calculator.sum();
+console.log(calculator.mul());
 
-// for( key in calculator) {
-//     console.log(calculator[key]);
-// }
+for( key in calculator) {
+    console.log(calculator[key]);
+}
 
 let ladder = {
     step: 0,
