@@ -378,17 +378,17 @@ console.log(ladder?.up()?.down()?.showStep());
 //.up().down().showStep(); 
 console.log(ladder.step);
 
-function Сalculator(num, num2) {
-    this.firstNum = num,
-    this.secondNum = num2,
+function Calculator() {
+    this.firstNum = 0,
+    this.secondNum = 0,
     this.total = 0,
 
     this.read = function() {
-         num = +prompt("Введите число?", "5");
-         num2 = +prompt("Введите ещё одно?", "18"); 
+        this.firstNum = 5;//+prompt("Введите число?", "5");
+         this.secondNum = 18;//+prompt("Введите ещё одно?", "18"); 
     },
     this.sum = function() {
-        this.total = this.num + this.num2;
+        return this.firstNum + this.secondNum;
     },
     this.mul = function() {
         return this.firstNum * this.secondNum;
@@ -396,5 +396,21 @@ function Сalculator(num, num2) {
 }
 
 let calc = new Calculator();
+calc.read();
 
-console.log("Sum=" + calc.read());
+console.log("Sum= " + calc.sum());
+console.log("Mul= " + calc.mul());
+
+function Accumulator(startingValue) {
+    this.value = startingValue,
+    this.read = function() {
+        return this.value += +prompt("Введите число?", "10");
+    }
+}
+
+let accumulator = new Accumulator(5);
+accumulator.read();
+accumulator.read();
+accumulator.read();
+
+console.log(accumulator.value);
