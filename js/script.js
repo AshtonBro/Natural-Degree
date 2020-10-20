@@ -529,9 +529,9 @@ const fibonachiNumbers = (n) => {
     return result;
 }
 
-const fiboRec = n => {
-    return n <= 1 ? 1 : fiboRec(n - 1) + fiboRec(n - 2);
+const fiboRec = (n) => {
+    return n <= 1 ? n : fiboRec(n - 1) + fiboRec(n - 2);
 }
 
 console.log(fibonachiNumbers(7));
-console.log(fiboRec(7));
+console.log(fiboRec(2));
