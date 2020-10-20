@@ -1,85 +1,85 @@
-// 'use strict';
+'use strict';
 
-// //? Задание 1: Используя оператор while, выведите все числа от 45 до 670, кратные 10.
-// let startIndex = 45;
-// let endIndex = 670;
-// while (++startIndex < endIndex) {
-//     if ((startIndex % 10) === 0) {
-//         console.log(startIndex);
-//     }
-// }
+//? Задание 1: Используя оператор while, выведите все числа от 45 до 670, кратные 10.
+let startIndex = 45;
+let endIndex = 670;
+while (++startIndex < endIndex) {
+    if ((startIndex % 10) === 0) {
+        console.log(startIndex);
+    }
+}
 
-// //? Задание 2: Напишите функцию возведения натурального числа x в степень n.
-// const isNaturalNumber = (num) => {
-//     if (num => 0 && (num % 1) === 0) {
-//         return true;
-//     }
-//     return false;
-// };
+//? Задание 2: Напишите функцию возведения натурального числа x в степень n.
+const isNaturalNumber = (num) => {
+    if (num => 0 && (num % 1) === 0) {
+        return true;
+    }
+    return false;
+};
 
-// const naturalDegree = (naturalNum, degree) => {
-//     //? Check is number null
-//     if (isNaturalNumber(naturalNum) == true && isNaturalNumber(degree) && degree >= 0) {
-//         let firstNaturalNum = naturalNum;
-//         //return Math.pow(naturalNum, degree);
-//         for (let i = 2; i <= degree; i++) {
-//             naturalNum *= firstNaturalNum;
-//         }
-//         return naturalNum;
-//     }
-//     return false;
-// };
+const naturalDegree = (naturalNum, degree) => {
+    //? Check is number null
+    if (isNaturalNumber(naturalNum) == true && isNaturalNumber(degree) && degree >= 0) {
+        let firstNaturalNum = naturalNum;
+        //return Math.pow(naturalNum, degree);
+        for (let i = 2; i <= degree; i++) {
+            naturalNum *= firstNaturalNum;
+        }
+        return naturalNum;
+    }
+    return false;
+};
 
-// console.log(naturalDegree(5, 2));
+console.log(naturalDegree(5, 2));
 
-// //? Задание 3: Палиндром — слово, предложение или последовательность символов, которая абсолютно одинаково читается как в привычном направлении, так и в обратном. К примеру, “Anna” — это палиндром, а “table” и “John” — нет.
-// const isPalindrome = (text) => {
-//     const firstText = text.toLowerCase();
-//     let reverseText = "";
-//     for (let i = firstText.length - 1; i >= 0; i--) {
-//         reverseText += firstText[i];
-//     }
-//     return reverseText === firstText;
-// };
+//? Задание 3: Палиндром — слово, предложение или последовательность символов, которая абсолютно одинаково читается как в привычном направлении, так и в обратном. К примеру, “Anna” — это палиндром, а “table” и “John” — нет.
+const isPalindrome = (text) => {
+    const firstText = text.toLowerCase();
+    let reverseText = "";
+    for (let i = firstText.length - 1; i >= 0; i--) {
+        reverseText += firstText[i];
+    }
+    return reverseText === firstText;
+};
 
-// console.log(isPalindrome('Anna'));
+console.log(isPalindrome('Anna'));
 
-// //? Задание 4: Напишите функцию,  которая в зависимости от переданного в нее целочисленного аргумента n, будет выводить слово «товар» в нужной форме («12 товаров», но «22 товара»).
-// const isDeclensions = (num) => {
-//     if (isNaturalNumber(num)) {
-//         let num2 = num % 10;
-//         if (num > 10 && num < 20 || num === 0) {
-//             return "товаров";
-//         }
-//         if (num2 > 1 && num2 < 5) {
-//             return "товара";
-//         }
-//         if (num2 === 1) {
-//             return "товар";
-//         }
-//         return "товаров";
-//     }
-// };
+//? Задание 4: Напишите функцию,  которая в зависимости от переданного в нее целочисленного аргумента n, будет выводить слово «товар» в нужной форме («12 товаров», но «22 товара»).
+const isDeclensions = (num) => {
+    if (isNaturalNumber(num)) {
+        let num2 = num % 10;
+        if (num > 10 && num < 20 || num === 0) {
+            return "товаров";
+        }
+        if (num2 > 1 && num2 < 5) {
+            return "товара";
+        }
+        if (num2 === 1) {
+            return "товар";
+        }
+        return "товаров";
+    }
+};
 
-// for (let i = 0; i < 200; i++) {
-//     console.log(i + ": " + isDeclensions(i));
-// }
+for (let i = 0; i < 200; i++) {
+    console.log(i + ": " + isDeclensions(i));
+}
 
-// //? Задание 5: Напишите функцию, показывающую текущий день недели в коротком формате: пн, вт и т.д.
-// (function getDayOfWeek() {
-//     let date = new Date();
-//     return console.log(date.toLocaleString('ru', {
-//         weekday: 'short'
-//     }));
-//     //let date = new Date().getDate();
-//     // let daysArray = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
-//     // return console.log(daysArray[date]);
-// }());
+//? Задание 5: Напишите функцию, показывающую текущий день недели в коротком формате: пн, вт и т.д.
+(function getDayOfWeek() {
+    let date = new Date();
+    return console.log(date.toLocaleString('ru', {
+        weekday: 'short'
+    }));
+    //let date = new Date().getDate();
+    // let daysArray = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+    // return console.log(daysArray[date]);
+}());
 
-// let a = 1, b = 1;
-// let c = ++a;
-// let d = b++;
-// console.log(a, b);
+let a = 1, b = 1;
+let c = ++a;
+let d = b++;
+console.log(a, b);
 
 let a1 = "" + 1 + 0;
 let a2 = "" - 1 + 0;
@@ -151,8 +151,8 @@ objCon["quantity doors"] = 5;
 
 console.log("apple" in user);
 
-for (key in objCon) {
-    console.log(key + " : " + objCon[key]);
+for (let elem in objCon) {
+    console.log(elem + " : " + objCon[elem]);
 }
 
 console.log(String(Math.trunc(objCon.maxSpeed)));
@@ -313,7 +313,7 @@ let myObj = {
 console.log('before: ', myObj);
 
 const mulriplyNumeric = (obj) => {
-    for(key in obj) {
+    for(let key in obj) {
         if(typeof(obj[key]) === "number") {
             obj[key] *= 2;
         }
@@ -341,8 +341,8 @@ let calculator = {
     secondNum: 0,
     total: 0,
     read() {
-         this.firstNum = +prompt("Введите число?", "5");
-         this.secondNum = +prompt("Введите ещё одно?", "18"); 
+         this.firstNum = 5 //+prompt("Введите число?", "5");
+         this.secondNum = 10// +prompt("Введите ещё одно?", "18"); 
     },
     sum() {
         this.total = this.firstNum + this.secondNum;
@@ -355,10 +355,6 @@ let calculator = {
 calculator.read();
 calculator.sum();
 console.log(calculator.mul());
-
-for( key in calculator) {
-    console.log(calculator[key]);
-}
 
 let ladder = {
     step: 0,
@@ -407,7 +403,7 @@ console.log("Mul= " + calc.mul());
 function Accumulator(startingValue) {
     this.value = startingValue,
     this.read = function() {
-        return this.value += +prompt("Введите число?", "10");
+        return this.value += 10 //+prompt("Введите число?", "10");
     }
 }
 
@@ -417,3 +413,72 @@ accumulator.read();
 accumulator.read();
 
 console.log(accumulator.value);
+
+function pow(x, n) {
+    let result = 1;
+    for (let i = 0; i < n; i++) {
+        result *= x;
+    }
+    return result;
+}
+
+console.log(pow(3,3));
+
+function powRec(x, n) {
+    if(n === 1) {
+        return x;
+    } else {
+        return x * pow(x, n - 1);
+    }
+}
+
+console.log(powRec(5,7));
+
+function powTer(x, n) {
+    return n === 1 ? x : x * pow(x, n - 1);
+}
+
+let company = {
+    sales: [
+        {
+            name: 'John',
+            salary: 600
+        },
+        {
+            name: 'Alice',
+            salary: 1200
+        }
+    ],
+    development: {
+        sites: [
+            {
+                name: 'Max',
+                salary: 6000
+            },
+            {
+                name: 'Zhenua',
+                salary: 4800
+            }
+        ],
+        unternals: [
+            {
+                name: 'Erik',
+                salary: 580
+            }
+        ]
+    }
+};
+
+function sumSalaries(department) {
+if (Array.isArray(department)) { // случай (1)
+    return department.reduce((prev, current) => prev + current.salary, 0); // сумма элементов массива
+} else { // случай (2)
+    let sum = 0;
+    for (let subdep of Object.values(department)) {
+    sum += sumSalaries(subdep); // рекурсивно вызывается для подотделов, суммируя результаты
+    }
+    return sum;
+}
+}
+
+console.log(sumSalaries(company)); 
