@@ -603,6 +603,34 @@ console.log(newArr);
 newObj = Object.fromEntries(Object.entries(classicObject).map(([key, value]) => [key, value]));
 console.log('newObj: ', newObj);
 
+let nameArr = ["Vasja","Petja", "Kolja", "Maxim"]
+
+//* Desctruct arr on the variables
+let [ name1, name2, name3, name5 ] = nameArr; 
+
+let [ nameOne, , nameThree] = nameArr;
+
+let [ firstNameVas, ...another] = nameArr;
+console.log('another: ', another);
+
+let objName = {};
+[objName.name, objName.surname] = "Vasyja Shishkin".split(' ');
+console.log('objName: ', objName);
+
+let newClassicObject = {
+    name: "John",
+    age: "28",
+    gender: "Man",
+    "Marital status": "Single",
+    salary: 4500
+}
+
+let objNewIbj = {};
+for (const [key, value] of Object.entries(newClassicObject)) {
+    objNewIbj[key] = value;
+}
+console.log('objNewIbj: ', objNewIbj);
+
 //* Home work 4
 
 const sumTo = (n) => {
