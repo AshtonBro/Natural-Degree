@@ -483,210 +483,235 @@
 
 // console.log(sumSalaries(company)); 
 
-let range = {
-    from: 1,
-    to: 5
-};
+// let range = {
+//     from: 1,
+//     to: 5
+// };
 
-range[Symbol.iterator] = function() {
-    return {
-        current: this.from,
-        last: this.to,
-        next() {
-            if(this.current <= this.last) {
-                return {
-                    done: false,
-                    value: this.current++
-                }
-            }
-            return {
-                done: true
-            }
-        }
-    }
-}
+// range[Symbol.iterator] = function() {
+//     return {
+//         current: this.from,
+//         last: this.to,
+//         next() {
+//             if(this.current <= this.last) {
+//                 return {
+//                     done: false,
+//                     value: this.current++
+//                 }
+//             }
+//             return {
+//                 done: true
+//             }
+//         }
+//     }
+// }
 
-for (let num of range) {
-    console.log("range:" + num);
-}
+// for (let num of range) {
+//     console.log("range:" + num);
+// }
 
-let str = "Hello";
-let iterator = str[Symbol.iterator]();
+// let str = "Hello";
+// let iterator = str[Symbol.iterator]();
 
-while(true) {
-    let result = iterator.next();
-    if(result.done) break;
-    console.log(result.value);
-}
+// while(true) {
+//     let result = iterator.next();
+//     if(result.done) break;
+//     console.log(result.value);
+// }
 
-let arrayLike = { // есть индексы и свойство length => псевдомассив
-    0: "Hello",
-    1: "World",
-    length: 2
-};
+// let arrayLike = { // есть индексы и свойство length => псевдомассив
+//     0: "Hello",
+//     1: "World",
+//     length: 2
+// };
 
-arrayLike[Symbol.iterator] = function() {
-    return {
-        current: 0,
-        last: 1,
-        next() {
-            if(this.current <= this.last) {
-                return {
-                    done: false,
-                    value: this.current++
-                }
-            }
-            return {
-                done: true
-            }
-        }
-    }
-};
+// arrayLike[Symbol.iterator] = function() {
+//     return {
+//         current: 0,
+//         last: 1,
+//         next() {
+//             if(this.current <= this.last) {
+//                 return {
+//                     done: false,
+//                     value: this.current++
+//                 }
+//             }
+//             return {
+//                 done: true
+//             }
+//         }
+//     }
+// };
 
-  // Ошибка (отсутствует Symbol.iterator)
-for (let item of arrayLike) {
-    console.log(item);
-}
+//   Ошибка (отсутствует Symbol.iterator)
+// for (let item of arrayLike) {
+//     console.log(item);
+// }
 
-let psevdoArr = {
-    0: "I",
-    1: "'",
-    2: "am",
-    3: "like",
-    4: "array",
-    5: "!",
-    length: 6
-}
+// let psevdoArr = {
+//     0: "I",
+//     1: "'",
+//     2: "am",
+//     3: "like",
+//     4: "array",
+//     5: "!",
+//     length: 6
+// }
 
-let arrGen = Array.from(psevdoArr);
-for (const key in arrGen) {
-    console.log(arrGen[key]);
-}
+// let arrGen = Array.from(psevdoArr);
+// for (const key in arrGen) {
+//     console.log(arrGen[key]);
+// }
 
-let objPow = {
-    0: 2,
-    1: 3,
-    2: 5,
-    3: 6,
-    length: 4
-}
+// let objPow = {
+//     0: 2,
+//     1: 3,
+//     2: 5,
+//     3: 6,
+//     length: 4
+// }
 
-let arrPow = Array.from(objPow, num => num *= num);
-console.log(arrPow);
+// let arrPow = Array.from(objPow, num => num *= num);
+// console.log(arrPow);
 
-let classicObject = {
-    name: "John",
-    age: "28",
-    gender: "Man",
-    "Marital status": "Single",
-    salary: 4500
-}
+// let classicObject = {
+//     name: "John",
+//     age: "28",
+//     gender: "Man",
+//     "Marital status": "Single",
+//     salary: 4500
+// }
 
-//? Собрать новый обьект
-let newObj = {};
-let newArr = [];
+// ? Собрать новый обьект
+// let newObj = {};
+// let newArr = [];
 
-for (const key of Object.keys(classicObject)) {
-    console.log("keys: " + key);
-}
-for (const key of Object.values(classicObject)) {
-    console.log("values: " + key);
-}
-for (const key of Object.entries(classicObject)) {
-    console.log("entries: " + key);
-}
-for (const key of Object.entries(classicObject)) {
-    newArr.push(key)
-}
-console.log(newArr);
+// for (const key of Object.keys(classicObject)) {
+//     console.log("keys: " + key);
+// }
+// for (const key of Object.values(classicObject)) {
+//     console.log("values: " + key);
+// }
+// for (const key of Object.entries(classicObject)) {
+//     console.log("entries: " + key);
+// }
+// for (const key of Object.entries(classicObject)) {
+//     newArr.push(key)
+// }
+// console.log(newArr);
 
-newObj = Object.fromEntries(Object.entries(classicObject).map(([key, value]) => [key, value]));
-console.log('newObj: ', newObj);
+// newObj = Object.fromEntries(Object.entries(classicObject).map(([key, value]) => [key, value]));
+// console.log('newObj: ', newObj);
 
-let nameArr = ["Vasja","Petja", "Kolja", "Maxim"]
+// let nameArr = ["Vasja","Petja", "Kolja", "Maxim"]
 
-//* Desctruct arr on the variables
-let [ name1, name2, name3, name5 ] = nameArr; 
+// * Desctruct arr on the variables
+// let [ name1, name2, name3, name5 ] = nameArr; 
 
-let [ nameOne, , nameThree] = nameArr;
+// let [ nameOne, , nameThree] = nameArr;
 
-let [ firstNameVas, ...another] = nameArr;
-console.log('another: ', another);
+// let [ firstNameVas, ...another] = nameArr;
+// console.log('another: ', another);
 
-let objName = {};
-[objName.name, objName.surname] = "Vasyja Shishkin".split(' ');
-console.log('objName: ', objName);
+// let objName = {};
+// [objName.name, objName.surname] = "Vasyja Shishkin".split(' ');
+// console.log('objName: ', objName);
 
-let newClassicObject = {
-    name: "John",
-    age: "28",
-    gender: "Man",
-    "Marital status": "Single",
-    salary: 4500
-}
+// let newClassicObject = {
+//     name: "John",
+//     age: "28",
+//     gender: "Man",
+//     "Marital status": "Single",
+//     salary: 4500
+// }
 
-let objNewIbj = {};
-for (const [key, value] of Object.entries(newClassicObject)) {
-    objNewIbj[key] = value;
-}
-console.log('objNewIbj: ', objNewIbj);
+// let objNewIbj = {};
+// for (const [key, value] of Object.entries(newClassicObject)) {
+//     objNewIbj[key] = value;
+// }
+// console.log('objNewIbj: ', objNewIbj);
 
-let [a, b, c] = "abc";
+// let [a, b, c] = "abc";
 
-let [name = "Guest", surname = "Anonymous"] = ["Julius"];
+// let [name = "Guest", surname = "Anonymous"] = ["Julius"];
 
-console.log(name);
-console.log(surname); 
+// console.log(name);
+// console.log(surname); 
 
-let params = {
-    width: 100,
-    height: 300,
-    "font-size": 15
-}
+// let params = {
+//     width: 100,
+//     height: 300,
+//     "font-size": 15
+// }
 
-let { width: w, height: h, "font-size": font } = params;
+// let { width: w, height: h, "font-size": font } = params;
 
-let parametrs = {
-    size: 15
-}
+// let parametrs = {
+//     size: 15
+// }
 
-let { width: wi = 400, heigth: hi = 700, size} = parametrs;
-console.log('parametrs: ', parametrs);
+// let { width: wi = 400, heigth: hi = 700, size} = parametrs;
+// console.log('parametrs: ', parametrs);
 
-let nestedObj = {
-    size: {
-        width: 100,
-        height: 200
-        },
-    items: ["Cake", "Donut"],
-    extra: true
-};
+// let nestedObj = {
+//     size: {
+//         width: 100,
+//         height: 200
+//         },
+//     items: ["Cake", "Donut"],
+//     extra: true
+// };
 
-let {
-    size: {
-        width,
-        height,
-        },
-    items: [item1, item2],
-    extra,
-    title = "Menu"
-} = nestedObj;
+// let {
+//     size: {
+//         width,
+//         height,
+//         },
+//     items: [item1, item2],
+//     extra,
+//     title = "Menu"
+// } = nestedObj;
 
-console.log(title);
+// console.log(title);
 
-let options = {
-    title: "My menu",
-    items: ["Item1", "Item2"]
-  };
-  
-  // ...и она немедленно извлекает свойства в переменные
-  function showMenu({title = "Untitled", width = 200, height = 100, items = []}) {
-    // title, items – взято из options,
-    // width, height – используются значения по умолчанию
-    alert( `${title} ${width} ${height}` ); // My Menu 200 100
-    alert( items ); // Item1, Item2
-  }
-  
+// let options = {
+//     title: "My menu",
+//     items: ["Item1", "Item2"]
+// };
+
+//   ...и она немедленно извлекает свойства в переменные
+// function showMenu({title = "Untitled", width = 200, height = 100, items = []}) {
+//     title, items – взято из options,
+//     width, height – используются значения по умолчанию
+//     console.log( `${title} ${width} ${height}` ); // My Menu 200 100
+//     console.log( items ); // Item1, Item2
+// }
+
+// function showMenu2(options = {}) {
+//     const { title = "Untitled", width = 200, height = 100, items = []} = options;
+//     console.log( `${title} ${width} ${height}` );
+// }
+
+// showMenu2();
+
+// let student = {
+//     name: "Zhenya",
+//     age: 29,
+//     isAdmin: true,
+//     courses: ["html", "css", "js", "c#", "msSql"],
+//     credit: null,
+//     work: {
+//         position: "developer",
+//         salary: 4500
+//     }
+// }
+
+// let json = JSON.stringify(student);
+// console.log(json);
+
+// json = JSON.parse(json)
+// console.log('json: ', json);
+
 
 
 //* Home work 4
@@ -741,4 +766,51 @@ const fiboRec = (n) => {
 console.log(fibonachiNumbers(7));
 console.log(fiboRec(2));
 
+let epmty = {};
 
+let salaries = {
+    "John": 100,
+    "Johya": 300,
+    "Pete": 300,
+    "Maty": 250,
+}
+
+const topSalary = (obj) => {
+    let resultKey = "";
+    let resultValue = 0;
+    for(let [key, value] of Object.entries(obj)) {
+        if(value > resultValue) {
+            resultValue = value;
+            resultKey = key;
+        }
+    }
+    return resultKey === "" ? null : resultKey;
+};
+
+console.log(topSalary(salaries));
+
+let currentUser = {
+    name: "John",
+    age: 30
+};
+
+let { name, age: years, isAdmin = false } = currentUser;
+console.log('currentUser: ', currentUser);
+
+let userJs = {
+    name: "Василий Иванович",
+    age: 35
+};
+
+let json = JSON.stringify(userJs);
+json = JSON.parse(json);
+
+let date = new Date(2012, 0, 3);
+
+const getLocalDay = (date) => {
+    return console.log(date.toLocaleString('gr', {
+        weekday: 'long'
+    }));
+};
+
+getLocalDay(date);
