@@ -483,6 +483,71 @@
 
 // console.log(sumSalaries(company)); 
 
+let range = {
+    from: 1,
+    to: 5
+};
+
+range[Symbol.iterator] = function() {
+    return {
+        current: this.from,
+        last: this.to,
+        next() {
+            if(this.current <= this.last) {
+                return {
+                    done: false,
+                    value: this.current++
+                }
+            }
+            return {
+                done: true
+            }
+        }
+    }
+}
+
+for (let num of range) {
+    console.log("range:" + num);
+}
+
+let str = "Hello";
+let iterator = str[Symbol.iterator]();
+
+while(true) {
+    let result = iterator.next();
+    if(result.done) break;
+    console.log(result.value);
+}
+
+let arrayLike = { // есть индексы и свойство length => псевдомассив
+    0: "Hello",
+    1: "World",
+    length: 2
+};
+
+arrayLike[Symbol.iterator] = function() {
+    return {
+        current: 0,
+        last: 1,
+        next() {
+            if(this.current <= this.last) {
+                return {
+                    done: false,
+                    value: this.current++
+                }
+            }
+            return {
+                done: true
+            }
+        }
+    }
+};
+
+  // Ошибка (отсутствует Symbol.iterator)
+for (let item of arrayLike) {
+    console.log(item);
+}
+
 //* Home work 4
 
 const sumTo = (n) => {
@@ -535,3 +600,5 @@ const fiboRec = (n) => {
 
 console.log(fibonachiNumbers(7));
 console.log(fiboRec(2));
+
+
