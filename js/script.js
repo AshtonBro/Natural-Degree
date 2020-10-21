@@ -806,7 +806,6 @@ let json = JSON.stringify(userJs);
 json = JSON.parse(json);
 
 let date = new Date(2012, 0, 3);
-
 const getLocalDay = (date) => {
     return console.log(date.toLocaleString('gr', {
         weekday: 'long'
@@ -814,3 +813,10 @@ const getLocalDay = (date) => {
 };
 
 getLocalDay(date);
+
+const getDateAgo = (date, days) => {
+    let dateCopy = new Date(date);
+    return dateCopy.getDate(dateCopy.setDate(date.getDate() - days));
+};
+
+console.log(getDateAgo(new Date(2020, 10, 21), 1));
