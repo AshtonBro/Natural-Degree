@@ -631,11 +631,68 @@ for (const [key, value] of Object.entries(newClassicObject)) {
 }
 console.log('objNewIbj: ', objNewIbj);
 
+let [a, b, c] = "abc";
+
+let [name = "Guest", surname = "Anonymous"] = ["Julius"];
+
+console.log(name);
+console.log(surname); 
+
+let params = {
+    width: 100,
+    height: 300,
+    "font-size": 15
+}
+
+let { width: w, height: h, "font-size": font } = params;
+
+let parametrs = {
+    size: 15
+}
+
+let { width: wi = 400, heigth: hi = 700, size} = parametrs;
+console.log('parametrs: ', parametrs);
+
+let nestedObj = {
+    size: {
+        width: 100,
+        height: 200
+        },
+    items: ["Cake", "Donut"],
+    extra: true
+};
+
+let {
+    size: {
+        width,
+        height,
+        },
+    items: [item1, item2],
+    extra,
+    title = "Menu"
+} = nestedObj;
+
+console.log(title);
+
+let options = {
+    title: "My menu",
+    items: ["Item1", "Item2"]
+  };
+  
+  // ...и она немедленно извлекает свойства в переменные
+  function showMenu({title = "Untitled", width = 200, height = 100, items = []}) {
+    // title, items – взято из options,
+    // width, height – используются значения по умолчанию
+    alert( `${title} ${width} ${height}` ); // My Menu 200 100
+    alert( items ); // Item1, Item2
+  }
+  
+
+
 //* Home work 4
 
 const sumTo = (n) => {
     return n === 1 ? n : n += sumTo(n - 1);
-     
 }
 
 const sumToFor = (n) => {
