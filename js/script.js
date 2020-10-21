@@ -559,7 +559,9 @@ let psevdoArr = {
 }
 
 let arrGen = Array.from(psevdoArr);
-console.log("arrGen: " + arrGen.pop());
+for (const key in arrGen) {
+    console.log(arrGen[key]);
+}
 
 let objPow = {
     0: 2,
@@ -569,10 +571,37 @@ let objPow = {
     length: 4
 }
 
-let arrPow = Array.from(objPow);
-
+let arrPow = Array.from(objPow, num => num *= num);
 console.log(arrPow);
 
+let classicObject = {
+    name: "John",
+    age: "28",
+    gender: "Man",
+    "Marital status": "Single",
+    salary: 4500
+}
+
+//? Собрать новый обьект
+let newObj = {};
+let newArr = [];
+
+for (const key of Object.keys(classicObject)) {
+    console.log("keys: " + key);
+}
+for (const key of Object.values(classicObject)) {
+    console.log("values: " + key);
+}
+for (const key of Object.entries(classicObject)) {
+    console.log("entries: " + key);
+}
+for (const key of Object.entries(classicObject)) {
+    newArr.push(key)
+}
+console.log(newArr);
+
+newObj = Object.fromEntries(Object.entries(classicObject).map(([key, value]) => [key, value]));
+console.log('newObj: ', newObj);
 
 //* Home work 4
 
