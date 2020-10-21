@@ -548,6 +548,32 @@ for (let item of arrayLike) {
     console.log(item);
 }
 
+let psevdoArr = {
+    0: "I",
+    1: "'",
+    2: "am",
+    3: "like",
+    4: "array",
+    5: "!",
+    length: 6
+}
+
+let arrGen = Array.from(psevdoArr);
+console.log("arrGen: " + arrGen.pop());
+
+let objPow = {
+    0: 2,
+    1: 3,
+    2: 5,
+    3: 6,
+    length: 4
+}
+
+let arrPow = Array.from(objPow);
+
+console.log(arrPow);
+
+
 //* Home work 4
 
 const sumTo = (n) => {
