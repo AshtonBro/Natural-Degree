@@ -815,8 +815,8 @@ const getLocalDay = (date) => {
 getLocalDay(date);
 
 const getDateAgo = (date, days) => {
-    let dateCopy = new Date(date);
-    return dateCopy.getDate(dateCopy.setDate(date.getDate() - days));
+    let dateClon = new Date(date);
+    return dateClon.getDate(dateClon.setDate(date.getDate() - days));
 };
 
-console.log(getDateAgo(new Date(2020, 10, 21), 1));
+console.log(getDateAgo(new Date(2020, 10, 21), 2));
