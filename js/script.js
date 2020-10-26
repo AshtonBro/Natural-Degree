@@ -1113,16 +1113,24 @@ army[0](); // у 0-го стрелка будет номер 10
 army[5](); // и у 5-го стрелка тоже будет номер 10
 
 
-let arrayNew = [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11];
+let arrayNew = [ 1, 2, 3, 5, 6, 43, 7, 8, 9, 10, 11];
 
 function inBetween(start, end) {
-    for(let i = 0; i <= end; i++) {
-        if(start >= 0 && 0 <= i) {
-            return [].push(i);
-        }
+    function between(param) {
+        return start <= param && param <= end;
     }
+    return between;
+}
+
+function inArray(array) {
+    function isIquals(param) {
+        for(let elem of array ) {
+            if (elem == param) return true;
+        }
+        return false;
+    }
+    return isIquals;
 }
 
 console.log(arrayNew.filter(inBetween(3, 6)));
-
-
+console.log(arrayNew.filter(inArray([1,2,65])));
