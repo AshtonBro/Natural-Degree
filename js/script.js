@@ -858,3 +858,38 @@ console.log('merge: ', merge);
 
 let merged = arrMer.concat(arrMer2);
 console.log('merged: ', merged);
+
+//* Замыкание
+//! Лексическое окружение LexicalEnvironment
+
+let userName = 'John';
+
+function sayHyi() {
+    console.log('Hi ' + userName);
+}
+userName = 'Max';
+sayHyi();
+
+//! LexicalEnvironment состоит из двух частей:
+/* 
+* 1. Environment Record - обёект, в свойствах которого хранятся все локальные переменные
+* a также другая информация например this.
+* 2.Ссылка на внешнее лексическое окружение - то есть то, которое соответсвует кода снаружи
+* (снаружи от текущих фигурных скобок)
+
+* ЛЕКСИЧЕСКОЕ ОКРУЖЕНИЕ – ЭТО СПЕЦИАЛЬНЫЙ ВНУТРЕННИЙ ОБЪЕКТ
+* «Лексическое окружение» – это специальный внутренний объект. Мы не можем получить его в нашем коде и изменять напрямую.
+*/
+
+function makeWorker() {
+    let nameme = "Petee";
+    return function() {
+        console.log(nameme);
+    }
+}
+
+let nameme = "John";
+makeWorker();
+let work = makeWorker();
+work();
+
