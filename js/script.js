@@ -893,3 +893,122 @@ makeWorker();
 let work = makeWorker();
 work();
 
+//* Функция конструктор
+function Userr(name) {
+    this.sayHu = function() {
+        console.log(name);
+    }
+}
+
+let user10 = new Userr('Zhenya');
+user10.sayHu();
+
+function makeCounter() {
+    let count = 0;
+    return function() {
+        return count++;
+    }
+}
+
+let counter1 = makeCounter();
+let counter2 = makeCounter();
+
+console.log(counter1());
+console.log(counter1());
+console.log(counter2());
+
+{
+    let message = 'Hello';
+    console.log(message);
+}
+// console.log(message); // Ошибка: переменная message не определена
+
+//* Global Object
+/*
+* В браузере он называется window, в Node.js — global, в другой среде исполнения может
+* называться иначе. Недавно globalThis был добавлен в язык как стандартизированное имя 
+* для глобального объекта, которое должно поддерживаться в любом окружении.
+*/
+
+console.log(window.Promise);
+
+let sayHh = function() {
+    console.log("sayHuu");
+}
+
+console.log(sayHh.name);
+
+function f(sayHh = function() {}) {
+    console.log(sayHh.name);
+}
+
+f();
+
+/*
+Свойство length иногда используется для интроспекций ( анализа типа объекта) в функциях, 
+которые работают с другими функциями. Идея в том, чтобы иметь простой синтаксис 
+обработчика без аргументов для положительных ответов, но также и возможность передавать 
+универсальные обработчики.
+*/
+
+// function ask(question, ...handlers) {
+//     let isYes = confirm(question);
+
+//     for(let handler of handlers) {
+//         if (handler.length == 0) {
+//         if (isYes) handler();
+//         } else {
+//         handler(isYes);
+//         }
+//     }
+// }
+
+// для положительных ответов вызываются оба типа обработчиков
+// для отрицательных - только второго типа
+// ask("Вопрос?", () => alert('Вы ответили да'), result => alert(result));
+
+function makeCounter2() {
+    // вместо
+    // let count = 0
+
+    function counter() {
+    return counter.count++;
+    };
+
+    counter.count = 0;
+
+    return counter;
+}
+
+let counter = makeCounter2();
+console.log( counter() ); // 0
+console.log( counter() ); // 1
+console.log( counter() ); // 2
+counter.count = 22;
+console.log( counter() );
+
+//! Named Function Expression
+//* Named Function Expression или NFE – это термин для Function Expression, у которого есть имя.
+
+let sayHi = function func(who) {
+    console.log(`Hello, ${who}`);
+};
+
+sayHi("John");
+
+let sayHi2 = function func(who) {
+    if(who) {
+        console.log(`Hello, ${who}`);
+    } else {
+        func("Guest");
+    }
+};
+
+sayHi2();
+sayHi2('Is no a Guest');
+
+//* Планирование
+
+
+
+
