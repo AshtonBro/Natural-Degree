@@ -845,6 +845,16 @@ function showName(firstName, lastName, ...titles) {
     console.log( titles[0] );
     console.log( titles[1] );
     console.log( titles.length );
+    console.log( titles );
 }
 
-showName("Юлий", "Цезарь", "Консул", "Император");
+showName("Юлий", "Цезарь", "Консул", "Император", "Cултан", "Посол");
+
+let arrMer = [ 1, 2, 3, 5, 6, 7, 8 ];
+let arrMer2 = [ 77, 88, 99, 55, 33 ];
+
+let merge = [...arrMer, 0, ...arrMer2];
+console.log('merge: ', merge);
+
+let merged = arrMer.concat(arrMer2);
+console.log('merged: ', merged);
