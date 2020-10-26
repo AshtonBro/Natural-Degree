@@ -1012,16 +1012,117 @@ function sayHi3(phrase, who) {
     console.log( phrase + ', ' + who );
 }
 
-setTimeout(sayHi3, 1000, "Привет", "Джон"); 
+// setTimeout(sayHi3, 1000, "Привет", "Джон"); 
 
-let timerId = setTimeout(() => {
-    console.log('Запущен таймаут');
-}, 1000);
+// let timerId = setTimeout(() => {
+//     console.log('Запущен таймаут');
+// }, 1000);
 
-clearTimeout(timerId);
-console.log(timerId); 
+// clearTimeout(timerId);
+// console.log(timerId); 
 
 setTimeout(() => console.log("Мир"));
 console.log('Before SetTimeout');
 
 //* Упражнения
+function Counter() {
+    let count = 0;
+
+    this.up = function() {
+        return ++count;
+    };
+    this.down = function() {
+        return --count;
+    };
+}
+
+let counterNew = new Counter();
+console.log(counterNew.up()); // 0
+console.log(counterNew.up()); // 1
+console.log(counterNew.down()); // 1
+
+
+let phrase5 = "Hello";
+
+if (true) {
+    let user = "John";
+
+    function sayHiii() {
+        console.log(`${phrase5}, ${user}`);
+    }
+
+}
+// sayHiii() // Не будет работать, потому что после скобок переменные и функции стераются
+
+function sumZam(num) {
+    let currentSum = num;
+
+    function func(nextNum) {
+        currentSum += nextNum;
+        return func;
+    }
+
+    func[Symbol.toPrimitive] = function() {
+        return currentSum;
+    }
+
+    return func;
+}
+
+console.log(sumZam(5)(5)(12));
+
+let i = 0;
+
+setTimeout(() => console.log("setTimer: " + i), 100); // ?
+
+// предположим, что время выполнения этой функции >100 мс
+for(let j = 0; j < 100000000; j++) {
+    i++;
+}
+console.log(i);
+
+function sumM(num) {
+    let currentNum = num;
+    function foo(nextNum) {
+        currentNum += nextNum;
+        return currentNum;
+    }
+    
+    return foo;
+}
+
+console.log(sumM(5)(43));
+console.log(sumM(5)(-1));
+
+function makeArmy() {
+    let shooters = [];
+
+    for (let i = 0; i < 10; i++) {
+        let shooter = function() { // функция shooter
+            console.log( i ); // должна выводить порядковый номер
+        };
+        shooters.push(shooter);
+    }
+
+    return shooters;
+}
+
+let army = makeArmy();
+
+army[0](); // у 0-го стрелка будет номер 10
+army[5](); // и у 5-го стрелка тоже будет номер 10
+
+
+let arrayNew = [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11];
+
+function inBetween(start, end) {
+    for(let i = 0; i <= end; i++) {
+        if(start >= 0 && 0 <= i) {
+            return [].push(i);
+        }
+    }
+}
+
+console.log(arrayNew.filter(inBetween(3, 6)));
+
+
