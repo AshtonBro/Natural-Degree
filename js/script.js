@@ -821,7 +821,6 @@ const getDateAgo = (date, days) => {
 
 console.log(getDateAgo(new Date(2020, 10, 21), 2));
 
-
 //* Функции, Остаточные параметры
 
 function sum(a, b) {
@@ -839,3 +838,13 @@ function sumAll(...args) {
 }
 
 console.log(sumAll(1,2, 3, 2, 3));
+
+function showName(firstName, lastName, ...titles) {
+    console.log( firstName + ' ' + lastName );
+
+    console.log( titles[0] );
+    console.log( titles[1] );
+    console.log( titles.length );
+}
+
+showName("Юлий", "Цезарь", "Консул", "Император");
