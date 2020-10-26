@@ -1008,7 +1008,20 @@ sayHi2();
 sayHi2('Is no a Guest');
 
 //* Планирование
+function sayHi3(phrase, who) {
+    console.log( phrase + ', ' + who );
+}
 
+setTimeout(sayHi3, 1000, "Привет", "Джон"); 
 
+let timerId = setTimeout(() => {
+    console.log('Запущен таймаут');
+}, 1000);
 
+clearTimeout(timerId);
+console.log(timerId); 
 
+setTimeout(() => console.log("Мир"));
+console.log('Before SetTimeout');
+
+//* Упражнения
