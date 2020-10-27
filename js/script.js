@@ -1195,3 +1195,36 @@ worker.slower = cachingDecorator(worker.slower); // теперь сделаем 
 
 console.log( worker.slower(2) ); // Ой! Ошибка: не удаётся прочитать свойство 'someMethod' из 'undefined'
 
+
+//* Передача всех аргументов вместе с контекстом другой функции называется «перенаправлением вызова» (call forwarding).
+let workerNext = {
+    slow(min, max) {
+        console.log(`Called with ${min}, ${max}`);
+        return min + max;
+    },
+};
+
+function cashingDecorator(func, hash) {
+    let cache = new Map();
+    return function() {
+        let key = hash(arguments);
+        if(cache.has(key)){
+            return cache.get(key);
+        }
+        
+        let result = func.call(this, ...arguments);
+        cache.set(key, result);
+        return result;
+    };
+}
+
+function hash(args) {
+    return args[0] + ',' + args[1];
+}
+
+workerNext.slow = cashingDecorator(workerNext.slow, hash);
+console.log(workerNext.slow(3, 5));
+console.log('Again: ' + workerNext.slow(3, 5));
+
+
+
