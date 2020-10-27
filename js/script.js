@@ -1134,3 +1134,64 @@ function inArray(array) {
 
 console.log(arrayNew.filter(inBetween(3, 6)));
 console.log(arrayNew.filter(inArray([1,2,65, 43])));
+
+let cash2 = new Map([[ 1, 'one' ],[ 2, 'two' ]]);
+console.log(cash2.size);
+
+function slow(x) {
+    // мой код
+    console.log(`Called with ${x}`);
+    return x;
+}
+
+function cachingDecoration(func) {
+    let cashe = new Map();
+
+    return function(x) {
+        if(cashe.has(x)) {
+            return cashe.get(x);
+        }
+
+        let result = func(x);
+        cashe.set(x, result);
+        return result;
+    };
+}
+
+slow = cachingDecoration(slow);
+console.log( 'Slow: ', slow(1) );
+console.log( "Again: " + slow(1) ); 
+console.dir( "Slow2: " + slow(2) );
+console.dir( "Again: " + slow(2) ); 
+
+let worker = {
+    someMehtod() {
+        return 1;
+    },
+
+    slower(x) {
+        // мой код
+        console.log(`Called with ${x}`);
+        return x * this.someMehtod();
+    }
+};
+
+// тот же код, что и выше
+function cachingDecorator(func) {
+    let cache = new Map();
+    return function(x) {
+        if (cache.has(x)) {
+            return cache.get(x);
+        }
+        let result = func.call(this, x); // (**)
+        cache.set(x, result);
+        return result;
+    };
+}
+
+console.log( worker.slower(1) ); // оригинальный метод работает
+
+worker.slower = cachingDecorator(worker.slower); // теперь сделаем его кеширующим
+
+console.log( worker.slower(2) ); // Ой! Ошибка: не удаётся прочитать свойство 'someMethod' из 'undefined'
+
