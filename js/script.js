@@ -1226,5 +1226,20 @@ workerNext.slow = cashingDecorator(workerNext.slow, hash);
 console.log(workerNext.slow(3, 5));
 console.log('Again: ' + workerNext.slow(3, 5));
 
+function anyHash() {
+    console.log([].join.call(arguments));
+}
 
+anyHash(1, 2);
+
+let anotherUser = {
+    name: "Vasja"
+};
+
+function anyGunc() {
+    console.log(this.name);
+}
+
+let funcUser = anyGunc.bind(anotherUser); // Привязка контекста bind
+funcUser();
 
