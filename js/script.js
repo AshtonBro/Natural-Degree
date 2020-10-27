@@ -1133,4 +1133,4 @@ function inArray(array) {
 }
 
 console.log(arrayNew.filter(inBetween(3, 6)));
-console.log(arrayNew.filter(inArray([1,2,65])));
+console.log(arrayNew.filter(inArray([1,2,65, 43])));
