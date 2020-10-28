@@ -1243,3 +1243,23 @@ function anyGunc() {
 let funcUser = anyGunc.bind(anotherUser); // Привязка контекста bind
 funcUser();
 
+function partial(func, ...argsBound) {
+    return function(...args) {
+        return func.call(this, ...argsBound, ...args);
+    }
+}
+
+  // использование:
+let userA = {
+    firstName: "John",
+    say(time, phrase) {
+        console.log(`[${time}] ${this.firstName}: ${phrase}!`);
+    }
+};
+
+// добавляем частично применённый метод с фиксированным временем
+userA.sayNow = partial(userA.say, new Date().getHours() + ':' + new Date().getMinutes());
+
+userA.sayNow("Hello");
+// Что-то вроде этого:
+// [10:00] John: Hello!
