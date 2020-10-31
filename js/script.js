@@ -1263,3 +1263,16 @@ userA.sayNow = partial(userA.say, new Date().getHours() + ':' + new Date().getMi
 userA.sayNow("Hello");
 // Что-то вроде этого:
 // [10:00] John: Hello!
+
+let descriptor = Object.getOwnPropertyDescriptor(userA, 'firstName')
+console.log('descriptor: ', JSON.stringify(descriptor, null, 2));
+
+let objDesc = {
+    name: "Max"
+};
+
+Object.defineProperty(objDesc, 'name', {
+    writable: false
+});
+
+console.log('descriptor: ', Object.getOwnPropertyDescriptor(objDesc, 'name'));
