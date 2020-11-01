@@ -1043,8 +1043,8 @@ function sayHi3(phrase, who) {
 // clearTimeout(timerId);
 // console.log(timerId); 
 
-setTimeout(() => console.log("Мир"));
-console.log('Before SetTimeout');
+// setTimeout(() => console.log("Мир"));
+// console.log('Before SetTimeout');
 
 //* Упражнения
 function Counter() {
@@ -1095,7 +1095,7 @@ console.log(sumZam(5)(5)(12));
 
 let i = 0;
 
-setTimeout(() => console.log("setTimer: " + i), 100); // ?
+//setTimeout(() => console.log("setTimer: " + i), 100); // ?
 
 // предположим, что время выполнения этой функции >100 мс
 for (let j = 0; j < 100000000; j++) {
@@ -1308,14 +1308,20 @@ console.log('descriptor: ', Object.getOwnPropertyDescriptor(objDesc, 'name'));
 let animal = {
     eats: true,
     walk() {
-        console.log("Aninmal walk");
+        if(!this.isSleeping) {
+            console.log("I walk");
+        }
+    },
+    sleep() {
+        this.isSleeping = true;
     },
     voice() {
-        console.log("Animal voice");
+        console.log(`${this.name} Said - Arrhhgg`);
     }
 };
 
 let rabbit = {
+    name: "Gray rabbit",
     jumps: true,
     __proto__: animal
 };
@@ -1326,6 +1332,11 @@ rabbit.voice = function() {
 
 animal.voice();
 rabbit.voice();
+
+rabbit.sleep();
+console.log(rabbit.isSleeping);
+console.log(animal.isSleeping);
+console.log(rabbit);
 
 let longEar = {
     earLength: 10,
@@ -1362,3 +1373,25 @@ console.log(adminCur.name);
 console.log(adminCur.surname);
 console.log(curUser.name);
 console.log(curUser.surname);
+
+console.log(Object.keys(rabbit));
+for(let [ key, value ] of Object.entries(rabbit)) {
+    console.log(`${key} : ${value}`);
+}
+for(let prop in rabbit) {
+    let isOwn = rabbit.hasOwnProperty(prop);
+    if(isOwn){
+        console.log('Our: ' + prop);
+    } else {
+        console.log('Inhering: ' + prop);
+    }
+}
+
+function setName(name){
+    this.name = name;
+}
+
+setName.prototype = animal;
+let newAnimal = new setName("White Rabbit");
+newAnimal.voice();
+console.log('newAnimal: ', newAnimal);
