@@ -1395,3 +1395,41 @@ setName.prototype = animal;
 let newAnimal = new setName("White Rabbit");
 newAnimal.voice();
 console.log('newAnimal: ', newAnimal);
+
+//* Встроенные прототипы
+let justObj = new Object();
+console.log(justObj);
+
+console.log(justObj.__proto__ === Object.prototype); // true
+console.log(justObj.toString === Object.prototype.toString); // true
+console.log(justObj.toString === justObj.__proto__.toString); // true
+
+String.prototype.show = function() {
+    console.log(this);
+};
+
+"BOOM".show();
+
+justObj.__proto__ = Array.prototype;
+console.log('justObj: ', justObj);
+
+//? Методы прототипов
+//* Object.create(proto, [descriptors]) – создаёт пустой объект со свойством [[Prototype]], указанным как proto, и необязательными дескрипторами свойств descriptors.
+//* Object.getPrototypeOf(obj) – возвращает свойство [[Prototype]] объекта obj.
+//* Object.setPrototypeOf(obj, proto) – устанавливает свойство [[Prototype]] объекта obj как proto.
+
+let wolf = {
+    eats: true,
+};
+
+//* создаём новый объект с прототипом wolf
+let dog = Object.create(wolf);
+console.log(dog.eats);
+console.log(Object.getPrototypeOf(dog) === wolf); //* получаем прототип объекта dog
+Object.setPrototypeOf(dog, {}) //* заменяем прототип объекта dog на {}
+console.log('dog: ', dog);
+
+let cloneObj = Object.create(Object.getPrototypeOf(dog), Object.getOwnPropertyDescriptor(dog));
+console.log('cloneObj: ', cloneObj);
+
+
