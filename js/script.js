@@ -76,7 +76,8 @@ for (let i = 0; i < 200; i++) {
     // return console.log(daysArray[date]);
 }());
 
-let a = 1, b = 1;
+let a = 1,
+    b = 1;
 let c = ++a;
 let d = b++;
 console.log(a, b);
@@ -180,7 +181,7 @@ console.log(userr.age === user.age);
  готовую реализацию из JavaScript-библиотеки lodash.
 */
 
-user["sayHi"] = function() {
+user["sayHi"] = function () {
     console.log("Hello");
 };
 
@@ -194,8 +195,12 @@ let objMeth = {
     sayHi() {
         console.log(`Hello ${this.name}, This is ${this}`);
     },
-    hi() {console.log('hi');},
-    bye() {console.log('bye');},
+    hi() {
+        console.log('hi');
+    },
+    bye() {
+        console.log('bye');
+    },
 }
 
 objMeth.sayHi();
@@ -207,7 +212,7 @@ console.log('obj3: ', obj3);
 
 obj3();
 
-let objThis= {
+let objThis = {
     name: "Ilja",
     sayHi() {
         let arrow = () => console.log(this.name);
@@ -219,7 +224,7 @@ objThis.sayHi();
 
 let struct = new function () {
     this.name = "Legacy",
-    this.isAdmin = false
+        this.isAdmin = false
 }
 
 struct.name = "Inter";
@@ -227,7 +232,7 @@ console.log(struct);
 
 function BigUser(name) {
     this.name = name;
-    this.sayHi = function() {
+    this.sayHi = function () {
         console.log("Меня зовут " + this.name);
     }
 }
@@ -236,8 +241,8 @@ new BigUser("Женя").sayHi()
 
 let user1 = {
     firstName: "Иван"
-  };
-  
+};
+
 let user2 = null;
 let keys = "firstName";
 
@@ -245,7 +250,7 @@ console.log( user1?.[keys] );
 console.log( user2?.[keys] );
 
 console.log( user1?.[keys]?.something?.not?.existing);
-  
+
 let user3 = {
     name: "Петя"
 };
@@ -261,16 +266,16 @@ console.dir(user3.valueOf());
 let user5 = {
     name: "John",
     money: 1000,
-  
+
     [Symbol.toPrimitive](hint) {
-      console.log(`hint: ${hint}`);
-      return hint == "string" ? `{name: "${this.name}"}` : this.money;
+        console.log(`hint: ${hint}`);
+        return hint == "string" ? `{name: "${this.name}"}` : this.money;
     }
 };
-  
+
 console.log(user5);
 console.log(+user5);
-console.log(user5 + 500); 
+console.log(user5 + 500);
 
 let user6 = {
     name: "Sara",
@@ -296,7 +301,7 @@ myUser.name = "Pete";
 
 const isEmpty = (obj) => {
     console.log(obj);
-    for(key in obj) {
+    for (key in obj) {
         return true;
     }
     return false;
@@ -313,8 +318,8 @@ let myObj = {
 console.log('before: ', myObj);
 
 const mulriplyNumeric = (obj) => {
-    for(let key in obj) {
-        if(typeof(obj[key]) === "number") {
+    for (let key in obj) {
+        if (typeof (obj[key]) === "number") {
             obj[key] *= 2;
         }
     }
@@ -341,8 +346,8 @@ let calculator = {
     secondNum: 0,
     total: 0,
     read() {
-         this.firstNum = 5 //+prompt("Введите число?", "5");
-         this.secondNum = 10// +prompt("Введите ещё одно?", "18"); 
+        this.firstNum = 5 //+prompt("Введите число?", "5");
+        this.secondNum = 10 // +prompt("Введите ещё одно?", "18"); 
     },
     sum() {
         this.total = this.firstNum + this.secondNum;
@@ -361,37 +366,37 @@ let ladder = {
     up() {
         this.step++;
         return this;
-    },  
+    },
     down() {
         this.step--;
         return this;
     },
-    showStep: function() { 
-        console.log( this.step );
+    showStep: function () {
+        console.log(this.step);
         return this;
     }
 };
 
- ladder.up().up().down().showStep()
+ladder.up().up().down().showStep()
 
-.up().down().showStep(); 
+    .up().down().showStep();
 console.log(ladder.step);
 
 function Calculator() {
     this.firstNum = 0,
-    this.secondNum = 0,
-    this.total = 0,
+        this.secondNum = 0,
+        this.total = 0,
 
-    this.read = function() {
-        this.firstNum = 5;//+prompt("Введите число?", "5");
-         this.secondNum = 18;//+prompt("Введите ещё одно?", "18"); 
-    },
-    this.sum = function() {
-        return this.firstNum + this.secondNum;
-    },
-    this.mul = function() {
-        return this.firstNum * this.secondNum;
-    }
+        this.read = function () {
+            this.firstNum = 5; //+prompt("Введите число?", "5");
+            this.secondNum = 18; //+prompt("Введите ещё одно?", "18"); 
+        },
+        this.sum = function () {
+            return this.firstNum + this.secondNum;
+        },
+        this.mul = function () {
+            return this.firstNum * this.secondNum;
+        }
 }
 
 let calc = new Calculator();
@@ -402,9 +407,9 @@ console.log("Mul= " + calc.mul());
 
 function Accumulator(startingValue) {
     this.value = startingValue,
-    this.read = function() {
-        return this.value += 10 //+prompt("Введите число?", "10");
-    }
+        this.read = function () {
+            return this.value += 10 //+prompt("Введите число?", "10");
+        }
 }
 
 let accumulator = new Accumulator(5);
@@ -422,25 +427,24 @@ function pow(x, n) {
     return result;
 }
 
-console.log(pow(3,3));
+console.log(pow(3, 3));
 
 function powRec(x, n) {
-    if(n === 1) {
+    if (n === 1) {
         return x;
     } else {
         return x * pow(x, n - 1);
     }
 }
 
-console.log(powRec(5,7));
+console.log(powRec(5, 7));
 
 function powTer(x, n) {
     return n === 1 ? x : x * pow(x, n - 1);
 }
 
 let company = {
-    sales: [
-        {
+    sales: [{
             name: 'John',
             salary: 600
         },
@@ -450,8 +454,7 @@ let company = {
         }
     ],
     development: {
-        sites: [
-            {
+        sites: [{
                 name: 'Max',
                 salary: 6000
             },
@@ -460,40 +463,38 @@ let company = {
                 salary: 4800
             }
         ],
-        unternals: [
-            {
-                name: 'Erik',
-                salary: 580
-            }
-        ]
+        unternals: [{
+            name: 'Erik',
+            salary: 580
+        }]
     }
 };
 
 function sumSalaries(department) {
-if (Array.isArray(department)) { // случай (1)
-    return department.reduce((prev, current) => prev + current.salary, 0); // сумма элементов массива
-} else { // случай (2)
-    let sum = 0;
-    for (let subdep of Object.values(department)) {
-    sum += sumSalaries(subdep); // рекурсивно вызывается для подотделов, суммируя результаты
+    if (Array.isArray(department)) { // случай (1)
+        return department.reduce((prev, current) => prev + current.salary, 0); // сумма элементов массива
+    } else { // случай (2)
+        let sum = 0;
+        for (let subdep of Object.values(department)) {
+            sum += sumSalaries(subdep); // рекурсивно вызывается для подотделов, суммируя результаты
+        }
+        return sum;
     }
-    return sum;
-}
 }
 
-console.log(sumSalaries(company)); 
+console.log(sumSalaries(company));
 
 let range = {
     from: 1,
     to: 5
 };
 
-range[Symbol.iterator] = function() {
+range[Symbol.iterator] = function () {
     return {
         current: this.from,
         last: this.to,
         next() {
-            if(this.current <= this.last) {
+            if (this.current <= this.last) {
                 return {
                     done: false,
                     value: this.current++
@@ -513,9 +514,9 @@ for (let num of range) {
 let str = "Hello";
 let iterator = str[Symbol.iterator]();
 
-while(true) {
+while (true) {
     let result = iterator.next();
-    if(result.done) break;
+    if (result.done) break;
     console.log(result.value);
 }
 
@@ -525,12 +526,12 @@ let arrayLike = { // есть индексы и свойство length => пс�
     length: 2
 };
 
-arrayLike[Symbol.iterator] = function() {
+arrayLike[Symbol.iterator] = function () {
     return {
         current: 0,
         last: 1,
         next() {
-            if(this.current <= this.last) {
+            if (this.current <= this.last) {
                 return {
                     done: false,
                     value: this.current++
@@ -603,14 +604,14 @@ console.log(newArr);
 newObj = Object.fromEntries(Object.entries(classicObject).map(([key, value]) => [key, value]));
 console.log('newObj: ', newObj);
 
-let nameArr = ["Vasja","Petja", "Kolja", "Maxim"]
+let nameArr = ["Vasja", "Petja", "Kolja", "Maxim"]
 
 //* Desctruct arr on the variables
-let [ name1, name2, name3, name5 ] = nameArr; 
+let [name1, name2, name3, name5] = nameArr;
 
-let [ nameOne, , nameThree] = nameArr;
+let [nameOne, , nameThree] = nameArr;
 
-let [ firstNameVas, ...another] = nameArr;
+let [firstNameVas, ...another] = nameArr;
 console.log('another: ', another);
 
 let objName = {};
@@ -636,7 +637,7 @@ let [aVar, bVar, cVar] = "abc";
 let [name = "Guest", surname = "Anonymous"] = ["Julius"];
 
 console.log(name);
-console.log(surname); 
+console.log(surname);
 
 let params = {
     width: 100,
@@ -644,20 +645,28 @@ let params = {
     "font-size": 15
 }
 
-let { width: w, height: h, "font-size": font } = params;
+let {
+    width: w,
+    height: h,
+    "font-size": font
+} = params;
 
 let parametrs = {
     size: 15
 }
 
-let { width: wi = 400, heigth: hi = 700, size} = parametrs;
+let {
+    width: wi = 400,
+    heigth: hi = 700,
+    size
+} = parametrs;
 console.log('parametrs: ', parametrs);
 
 let nestedObj = {
     size: {
         width: 100,
         height: 200
-        },
+    },
     items: ["Cake", "Donut"],
     extra: true
 };
@@ -666,7 +675,7 @@ let {
     size: {
         width,
         height,
-        },
+    },
     items: [item1, item2],
     extra,
     title = "Menu"
@@ -680,16 +689,25 @@ let options = {
 };
 
 //...и она немедленно извлекает свойства в переменные
-function showMenu({title = "Untitled", width = 200, height = 100, items = []}) {
-    title, items // – взято из options,
-    width, height //– используются значения по умолчанию
-    console.log( `${title} ${width} ${height}` ); // My Menu 200 100
-    console.log( items ); // Item1, Item2
+function showMenu({
+    title = "Untitled",
+    width = 200,
+    height = 100,
+    items = []
+}) {
+    title,
+    items // – взято из options,
+    width,
+    height //– используются значения по умолчанию
+    console.log(`${title} ${width} ${height}`); // My Menu 200 100
+    console.log(items); // Item1, Item2
 }
 
 function showMenu2(options = {}) {
-    const { title = "Untitled", width = 200, height = 100, items = []} = options;
-    console.log( `${title} ${width} ${height}` );
+    const {
+        title = "Untitled", width = 200, height = 100, items = []
+    } = options;
+    console.log(`${title} ${width} ${height}`);
 }
 
 showMenu2();
@@ -742,7 +760,7 @@ console.log("sumToFor: " + sumToFor(100));
 console.log("sumToProg: " + sumToProg(100));
 
 const factorial = (n) => {
-   return n === 1 ? n : n *= factorial(n - 1);
+    return n === 1 ? n : n *= factorial(n - 1);
 }
 
 console.log("factorial: " + factorial(5));
@@ -778,8 +796,8 @@ let salaries = {
 const topSalary = (obj) => {
     let resultKey = "";
     let resultValue = 0;
-    for(let [key, value] of Object.entries(obj)) {
-        if(value > resultValue) {
+    for (let [key, value] of Object.entries(obj)) {
+        if (value > resultValue) {
             resultValue = value;
             resultKey = key;
         }
@@ -794,7 +812,11 @@ let currentUser = {
     age: 30
 };
 
-let { names, age: years, isAdmin = false } = currentUser;
+let {
+    names,
+    age: years,
+    isAdmin = false
+} = currentUser;
 console.log('currentUser: ', currentUser);
 
 let userJs = {
@@ -827,31 +849,31 @@ function sum(a, b) {
     return a + b;
 }
 
-console.log( sum(1, 3, 4, 5, 6) );
+console.log(sum(1, 3, 4, 5, 6));
 
 function sumAll(...args) {
     let sum = 0;
-    for(let arg of args) {
+    for (let arg of args) {
         sum += arg;
     }
     return sum;
 }
 
-console.log(sumAll(1,2, 3, 2, 3));
+console.log(sumAll(1, 2, 3, 2, 3));
 
 function showName(firstName, lastName, ...titles) {
-    console.log( firstName + ' ' + lastName );
+    console.log(firstName + ' ' + lastName);
 
-    console.log( titles[0] );
-    console.log( titles[1] );
-    console.log( titles.length );
-    console.log( titles );
+    console.log(titles[0]);
+    console.log(titles[1]);
+    console.log(titles.length);
+    console.log(titles);
 }
 
 showName("Юлий", "Цезарь", "Консул", "Император", "Cултан", "Посол");
 
-let arrMer = [ 1, 2, 3, 5, 6, 7, 8 ];
-let arrMer2 = [ 77, 88, 99, 55, 33 ];
+let arrMer = [1, 2, 3, 5, 6, 7, 8];
+let arrMer2 = [77, 88, 99, 55, 33];
 
 let merge = [...arrMer, 0, ...arrMer2];
 console.log('merge: ', merge);
@@ -883,7 +905,7 @@ sayHyi();
 
 function makeWorker() {
     let nameme = "Petee";
-    return function() {
+    return function () {
         console.log(nameme);
     }
 }
@@ -895,7 +917,7 @@ work();
 
 //* Функция конструктор
 function Userr(name) {
-    this.sayHu = function() {
+    this.sayHu = function () {
         console.log(name);
     }
 }
@@ -905,7 +927,7 @@ user10.sayHu();
 
 function makeCounter() {
     let count = 0;
-    return function() {
+    return function () {
         return count++;
     }
 }
@@ -925,20 +947,20 @@ console.log(counter2());
 
 //* Global Object
 /*
-* В браузере он называется window, в Node.js — global, в другой среде исполнения может
-* называться иначе. Недавно globalThis был добавлен в язык как стандартизированное имя 
-* для глобального объекта, которое должно поддерживаться в любом окружении.
-*/
+ * В браузере он называется window, в Node.js — global, в другой среде исполнения может
+ * называться иначе. Недавно globalThis был добавлен в язык как стандартизированное имя 
+ * для глобального объекта, которое должно поддерживаться в любом окружении.
+ */
 
 console.log(window.Promise);
 
-let sayHh = function() {
+let sayHh = function () {
     console.log("sayHuu");
 }
 
 console.log(sayHh.name);
 
-function f(sayHh = function() {}) {
+function f(sayHh = function () {}) {
     console.log(sayHh.name);
 }
 
@@ -972,7 +994,7 @@ function makeCounter2() {
     // let count = 0
 
     function counter() {
-    return counter.count++;
+        return counter.count++;
     };
 
     counter.count = 0;
@@ -981,11 +1003,11 @@ function makeCounter2() {
 }
 
 let counter = makeCounter2();
-console.log( counter() ); // 0
-console.log( counter() ); // 1
-console.log( counter() ); // 2
+console.log(counter()); // 0
+console.log(counter()); // 1
+console.log(counter()); // 2
 counter.count = 22;
-console.log( counter() );
+console.log(counter());
 
 //! Named Function Expression
 //* Named Function Expression или NFE – это термин для Function Expression, у которого есть имя.
@@ -997,7 +1019,7 @@ let sayHi = function func(who) {
 sayHi("John");
 
 let sayHi2 = function func(who) {
-    if(who) {
+    if (who) {
         console.log(`Hello, ${who}`);
     } else {
         func("Guest");
@@ -1009,7 +1031,7 @@ sayHi2('Is no a Guest');
 
 //* Планирование
 function sayHi3(phrase, who) {
-    console.log( phrase + ', ' + who );
+    console.log(phrase + ', ' + who);
 }
 
 // setTimeout(sayHi3, 1000, "Привет", "Джон"); 
@@ -1028,10 +1050,10 @@ console.log('Before SetTimeout');
 function Counter() {
     let count = 0;
 
-    this.up = function() {
+    this.up = function () {
         return ++count;
     };
-    this.down = function() {
+    this.down = function () {
         return --count;
     };
 }
@@ -1062,7 +1084,7 @@ function sumZam(num) {
         return func;
     }
 
-    func[Symbol.toPrimitive] = function() {
+    func[Symbol.toPrimitive] = function () {
         return currentSum;
     }
 
@@ -1076,18 +1098,19 @@ let i = 0;
 setTimeout(() => console.log("setTimer: " + i), 100); // ?
 
 // предположим, что время выполнения этой функции >100 мс
-for(let j = 0; j < 100000000; j++) {
+for (let j = 0; j < 100000000; j++) {
     i++;
 }
 console.log(i);
 
 function sumM(num) {
     let currentNum = num;
+
     function foo(nextNum) {
         currentNum += nextNum;
         return currentNum;
     }
-    
+
     return foo;
 }
 
@@ -1098,8 +1121,8 @@ function makeArmy() {
     let shooters = [];
 
     for (let i = 0; i < 10; i++) {
-        let shooter = function() { // функция shooter
-            console.log( i ); // должна выводить порядковый номер
+        let shooter = function () { // функция shooter
+            console.log(i); // должна выводить порядковый номер
         };
         shooters.push(shooter);
     }
@@ -1113,7 +1136,7 @@ army[0](); // у 0-го стрелка будет номер 10
 army[5](); // и у 5-го стрелка тоже будет номер 10
 
 
-let arrayNew = [ 1, 2, 3, 5, 6, 43, 7, 8, 9, 10, 11];
+let arrayNew = [1, 2, 3, 5, 6, 43, 7, 8, 9, 10, 11];
 
 function inBetween(start, end) {
     function between(param) {
@@ -1124,7 +1147,7 @@ function inBetween(start, end) {
 
 function inArray(array) {
     function isIquals(param) {
-        for(let elem of array ) {
+        for (let elem of array) {
             if (elem == param) return true;
         }
         return false;
@@ -1133,9 +1156,12 @@ function inArray(array) {
 }
 
 console.log(arrayNew.filter(inBetween(3, 6)));
-console.log(arrayNew.filter(inArray([1,2,65, 43])));
+console.log(arrayNew.filter(inArray([1, 2, 65, 43])));
 
-let cash2 = new Map([[ 1, 'one' ],[ 2, 'two' ]]);
+let cash2 = new Map([
+    [1, 'one'],
+    [2, 'two']
+]);
 console.log(cash2.size);
 
 function slow(x) {
@@ -1147,8 +1173,8 @@ function slow(x) {
 function cachingDecoration(func) {
     let cashe = new Map();
 
-    return function(x) {
-        if(cashe.has(x)) {
+    return function (x) {
+        if (cashe.has(x)) {
             return cashe.get(x);
         }
 
@@ -1159,10 +1185,10 @@ function cachingDecoration(func) {
 }
 
 slow = cachingDecoration(slow);
-console.log( 'Slow: ', slow(1) );
-console.log( "Again: " + slow(1) ); 
-console.dir( "Slow2: " + slow(2) );
-console.dir( "Again: " + slow(2) ); 
+console.log('Slow: ', slow(1));
+console.log("Again: " + slow(1));
+console.dir("Slow2: " + slow(2));
+console.dir("Again: " + slow(2));
 
 let worker = {
     someMehtod() {
@@ -1179,7 +1205,7 @@ let worker = {
 // тот же код, что и выше
 function cachingDecorator(func) {
     let cache = new Map();
-    return function(x) {
+    return function (x) {
         if (cache.has(x)) {
             return cache.get(x);
         }
@@ -1189,11 +1215,11 @@ function cachingDecorator(func) {
     };
 }
 
-console.log( worker.slower(1) ); // оригинальный метод работает
+console.log(worker.slower(1)); // оригинальный метод работает
 
 worker.slower = cachingDecorator(worker.slower); // теперь сделаем его кеширующим
 
-console.log( worker.slower(2) ); // Ой! Ошибка: не удаётся прочитать свойство 'someMethod' из 'undefined'
+console.log(worker.slower(2)); // Ой! Ошибка: не удаётся прочитать свойство 'someMethod' из 'undefined'
 
 
 //* Передача всех аргументов вместе с контекстом другой функции называется «перенаправлением вызова» (call forwarding).
@@ -1206,12 +1232,12 @@ let workerNext = {
 
 function cashingDecorator(func, hash) {
     let cache = new Map();
-    return function() {
+    return function () {
         let key = hash(arguments);
-        if(cache.has(key)){
+        if (cache.has(key)) {
             return cache.get(key);
         }
-        
+
         let result = func.call(this, ...arguments);
         cache.set(key, result);
         return result;
@@ -1244,12 +1270,12 @@ let funcUser = anyGunc.bind(anotherUser); // Привязка контекста
 funcUser();
 
 function partial(func, ...argsBound) {
-    return function(...args) {
+    return function (...args) {
         return func.call(this, ...argsBound, ...args);
     }
 }
 
-  // использование:
+// использование:
 let userA = {
     firstName: "John",
     say(time, phrase) {
@@ -1276,3 +1302,63 @@ Object.defineProperty(objDesc, 'name', {
 });
 
 console.log('descriptor: ', Object.getOwnPropertyDescriptor(objDesc, 'name'));
+
+//! Prototype
+
+let animal = {
+    eats: true,
+    walk() {
+        console.log("Aninmal walk");
+    },
+    voice() {
+        console.log("Animal voice");
+    }
+};
+
+let rabbit = {
+    jumps: true,
+    __proto__: animal
+};
+
+rabbit.voice = function() {
+    console.log("Rabbit voice");
+}
+
+animal.voice();
+rabbit.voice();
+
+let longEar = {
+    earLength: 10,
+    __proto__: rabbit
+};
+
+rabbit.__proto__ = animal;
+longEar.walk();
+
+console.log('longEar: ', longEar);
+
+let curUser = {
+    name: "John",
+    surname: "Smith",
+
+    set fullName(value) {
+        [this.name, this.surname] = value.split(" ");
+    },
+
+    get fullName() {
+        return `${this.name} ${this.surname}`;
+    }
+};
+
+let adminCur = {
+    __proto__: curUser,
+    isAdmin: true,
+};
+
+console.log(adminCur.fullName);
+adminCur.fullName = "Evgenii Solovev";
+
+console.log(adminCur.name);
+console.log(adminCur.surname);
+console.log(curUser.name);
+console.log(curUser.surname);
