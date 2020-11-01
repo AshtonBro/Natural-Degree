@@ -1432,4 +1432,4 @@ console.log('dog: ', dog);
 let cloneObj = Object.create(Object.getPrototypeOf(dog), Object.getOwnPropertyDescriptor(dog));
 console.log('cloneObj: ', cloneObj);
 
-
+//* Такой вызов создаёт точную копию объекта obj, включая все свойства: перечисляемые и неперечисляемые, геттеры/сеттеры для свойств – и всё это с правильным свойством [[Prototype]].
