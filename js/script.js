@@ -1433,3 +1433,43 @@ let cloneObj = Object.create(Object.getPrototypeOf(dog), Object.getOwnPropertyDe
 console.log('cloneObj: ', cloneObj);
 
 //* Такой вызов создаёт точную копию объекта obj, включая все свойства: перечисляемые и неперечисляемые, геттеры/сеттеры для свойств – и всё это с правильным свойством [[Prototype]].
+
+let hamster = {
+    stomach: [],
+
+    eat(food) {
+        this.stomach.push(food);
+    }
+};
+
+let speedy = {
+    stomach: [],
+    __proto__: hamster
+};
+
+let lazy = {
+    stomach: [],
+    __proto__: hamster
+};
+
+// Этот хомяк нашёл еду
+speedy.eat("apple");
+console.log( speedy.stomach ); // apple
+
+// У этого хомяка тоже есть еда. Почему? Исправьте
+lazy.eat("penApple")
+console.log( lazy.stomach ); // apple
+
+Function.prototype.defer = function(ms) {
+    let f = this;
+    return function(...args) {
+        setTimeout(() => f.apply(this, args), ms);
+    }
+};
+
+function funcDefer(a, b) {
+    console.log(a + b);
+}
+
+console.log(funcDefer(1, 2));
+funcDefer.defer(1500)(1,3);
