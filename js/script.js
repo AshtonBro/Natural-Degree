@@ -1541,3 +1541,41 @@ console.log(stud);
 
 stud = new Studentt("May");
 
+class Animals {
+    constructor(name) {
+        this.speed = 0;
+        this.name = name;
+    }
+
+    run(speed) {
+        this.speed = speed;
+        console.log(`${this.name} бежит со скоростью ${this.speed} км/4.`);
+    }
+
+    stop() {
+        this.speed = 0;
+        console.log(`${this.name} остановился.`);
+    }
+}
+
+class Rat extends Animals {
+    hide() {
+        console.log(`${this.name} прячится.`);
+    }
+}
+
+let rat = new Rat('Серая крыса');
+rat.run(150);
+rat.stop();
+rat.hide();
+
+function look(name) {
+    return class {
+        lookking() {
+            console.log(`${name} выглядывает.`);
+        }
+    }
+}
+
+class Bear extends look("Белый медведь") {}
+new Bear().lookking();
