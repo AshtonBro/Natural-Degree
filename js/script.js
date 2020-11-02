@@ -1471,5 +1471,73 @@ function funcDefer(a, b) {
     console.log(a + b);
 }
 
-console.log(funcDefer(1, 2));
-funcDefer.defer(1500)(1,3);
+// console.log(funcDefer(1, 2));
+// funcDefer.defer(1500)(1,3);
+
+//! Классы
+
+class MyClass {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+class User {
+    constructor(name) {
+        this.name = name;
+    }
+
+    sayHi() {
+        console.log(`class user said: ${this.name}`);
+    }
+}
+
+let userClass = new User("Evgenii");
+userClass.sayHi();
+console.log(typeof User);
+console.log(User.prototype);
+
+//* Class Expression
+let Users = class {
+    sayHi() {
+        console.log("Hi");
+    }
+};
+
+console.log(Users.prototype);
+
+function makeClass(phrase) {
+    return class {
+        sayHi() {
+            console.log(phrase);
+        };
+    };
+}
+
+let Userrr = makeClass("Hi doodde!");
+console.log('Userrr: ', typeof Userrr);
+new Userrr().sayHi();
+
+class Studentt {
+    constructor(name) {
+        this.name = name;
+    }
+
+    get name() {
+        return this._name;
+    }
+
+    set name(value) {
+        if( value.length < 4 ) {
+            console.log(`${value} - Name is very small`);
+            return;
+        }
+        this._name = value;
+    }
+}
+
+let stud = new Studentt("Ivan");
+console.log(stud);
+
+stud = new Studentt("May");
+
