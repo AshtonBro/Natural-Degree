@@ -1579,3 +1579,9 @@ function look(name) {
 
 class Bear extends look("Белый медведь") {}
 new Bear().lookking();
+
+class Rat extends Animals {
+    stop() {
+      setTimeout(() => super.stop(), 1000); // вызывает родительский stop после 1 секунды
+    }
+}
