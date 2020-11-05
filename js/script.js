@@ -1627,8 +1627,90 @@ class Mazda extends Car {
     constructor(model, earLength){
         super(model);
         this.earLength = earLength;
-    } 
+    }
+
+    static staticMethod() {
+        console.log(this === Mazda);
+    }
 }
 
+Mazda.staticMethod();
+
 let cx7 = new Mazda('CX7', 12);
-console.log(`cx7: ${cx7.model} earLength:${cx7.earLength}`);
+console.log(`cx7: ${cx7.model} earLength: ${cx7.earLength}`);
+
+class Article {
+    constructor(title, date) {
+        this.title = title;
+        this.date = date;
+    }
+
+    static compare(articleA, articleB) {
+        return articleA.date - articleB.date;
+    }
+}
+
+let articles = [
+    new Article("HTML", new Date(2019, 1, 1)),
+    new Article("CSS", new Date(2019, 2, 1)),
+    new Article("JS", new Date(2019, 11, 1))
+];
+
+articles.sort(Article.compare)
+
+for(let i = 0; i < articles.length; i++) {
+    console.log(articles[i].title);
+}
+
+//* Расширение встроенных классов
+
+class PowerArray extends Array {
+    isEmpty() {
+        return this.length === 0;
+    }
+}
+
+let pwArra = new PowerArray(1, 2, 3, 30);
+console.log('pwArra: ', pwArra.isEmpty());
+
+let filterPwArra = pwArra.filter(item => item >= 3);
+console.log('filterPwArra: ', filterPwArra);
+
+class Clock {
+    constructor({ template }){
+        this.template = template;
+    }
+
+    render() {
+        let date = new Date();
+
+        let hours = date.getHours();
+        if (hours < 10) hours = '0' + hours;
+
+        let mins = date.getMinutes();
+        if (mins < 10) mins = '0' + mins;
+
+        let secs = date.getSeconds();
+        if (secs < 10) secs = '0' + secs;
+
+        let output = this.template
+        .replace('h', hours)
+        .replace('m', mins)
+        .replace('s', secs);
+
+        console.log(output);
+    }
+
+    stop() {
+        clearInterval(timer);
+    }
+
+    start() {
+        this.render();
+        this.timer = setInterval(() => this.render, 1000);
+    }
+}
+
+
+let clock = new Clock({template: 'h:m:s'});
+clock.start();
