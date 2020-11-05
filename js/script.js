@@ -1580,8 +1580,44 @@ function look(name) {
 class Bear extends look("Белый медведь") {}
 new Bear().lookking();
 
-class Rat extends Animals {
+class Rats extends Animals {
     stop() {
-      setTimeout(() => super.stop(), 1000); // вызывает родительский stop после 1 секунды
+        setTimeout(() => super.stop(), 1000); // вызывает родительский stop после 1 секунды
     }
 }
+
+let newRat = new Rats("Крыс");
+newRat.stop();
+
+class Car {
+    constructor(model) {
+        this.speed = 0;
+        this.model = model;
+    }
+
+    forward(speed) {
+        this.speed = speed;
+        console.log(`${this.model} едут со скоростью ${this.speed}`);
+    }
+
+    stop() {
+        this.speed = 0;
+        console.log(`${this.model} стоит.`);
+    }
+}
+
+class Toyota extends Car {
+    offEngine() {
+        console.log(`${this.model} заглушил мотор.`);
+    }
+
+    stop() {
+        super.stop();
+        this.offEngine();
+    }
+}
+
+let prius = new Toyota("Prius");
+
+prius.forward(45);
+prius.stop();
