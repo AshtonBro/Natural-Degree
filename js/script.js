@@ -1621,3 +1621,14 @@ let prius = new Toyota("Prius");
 
 prius.forward(45);
 prius.stop();
+
+//* Переопределение конструктора
+class Mazda extends Car {
+    constructor(model, earLength){
+        super(model);
+        this.earLength = earLength;
+    } 
+}
+
+let cx7 = new Mazda('CX7', 12);
+console.log(`cx7: ${cx7.model} earLength:${cx7.earLength}`);
