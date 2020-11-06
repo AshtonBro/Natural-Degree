@@ -1722,8 +1722,28 @@ let promise = new Promise(function(resolve, reject) {
 });
 
 let promiseErr = new Promise(function(resolve, reject) {
-    reject(new Error("Promise return Error"));
+   // reject(new Error("Promise return Error"));
 });
 
 promise.then(result => console.log(result));
-promiseErr.then(reject => console.log(reject));
+//promiseErr.then(reject => console.log(reject));
+//promiseErr.catch();
+
+function loadScript(src) {
+    return new Promise(function(resolve, reject) {
+        let script = document.createElement('script');
+        script.src = src;
+
+        sctipt.load = () => resolve(script);
+        script.onerror = () => reject(new Error(`Ошибка загрузки скрипта ${src}`));
+
+        document.head.append(script);
+    });
+}
+
+let promiseAnother = loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js");
+promiseAnother.then(
+    script => console.log(`${script.src} загружен!`),
+    error => console.log(`Ошибка: ${error.message}`)
+).then(script => console.log('Ещё один обработчик...'));
+
