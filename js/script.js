@@ -1714,3 +1714,16 @@ class Clock {
 
 let clock = new Clock({template: 'h:m:s'});
 clock.start();
+
+//* Promise
+
+let promise = new Promise(function(resolve, reject) {
+    resolve("done!");
+});
+
+let promiseErr = new Promise(function(resolve, reject) {
+    reject(new Error("Promise return Error"));
+});
+
+promise.then(result => console.log(result));
+promiseErr.then(reject => console.log(reject));
