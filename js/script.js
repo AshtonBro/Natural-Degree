@@ -1586,7 +1586,7 @@ class Rats extends Animals {
 }
 
 let newRat = new Rats("Крыс");
-newRat.stop();
+//newRat.stop();
 
 class Car {
     constructor(model) {
@@ -1743,5 +1743,13 @@ function loadScript(src) {
 let promiseAnother = loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js");
 promiseAnother.then(
     script => console.log(`${script.src} загружен!`),
-    error => console.log(`Ошибка: ${error.message}`)
+    error => console.log(`Ошибка скрипта: ${error.message}`)
 ).then(script => console.log('Ещё один обработчик...'));
+
+
+//* Пример обработки Promise + добавление обработчика загрузки
+new Promise((resolve, reject) => {
+    resolve("Успешный промис");
+})
+.then(result => console.log(result), err => console.log("Ошибка"))
+.finally(() => console.log("Остановить индикатор загрузки"))
