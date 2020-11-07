@@ -1729,7 +1729,7 @@ promise.then(result => console.log(result));
 //promiseErr.catch();
 
 function loadScript(src) {
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
         let script = document.createElement('script');
         script.src = src;
 
@@ -1753,3 +1753,35 @@ new Promise((resolve, reject) => {
 })
 .then(result => console.log(result), err => console.log("Ошибка"))
 .finally(() => console.log("Остановить индикатор загрузки"))
+
+//* Thenable объект !ОЧЕНЬ ВАЖНО
+
+class Thenable {
+    constructor(num) {
+        this.num = num;
+    }
+
+    then(resolve, reject) {
+        console.log(resolve);
+        setTimeout(() => resolve(this.num * 2), 500);
+    }
+}
+
+new Promise (resolve => resolve(2))
+.then(result => {
+    return new Thenable(result);
+}).then(result => console.log(result))
+
+new Promise((resolve, reject) => {
+setTimeout(() => resolve(2), 1000);
+}).then(result => {
+    console.log(result);
+    return new Promise((resolve, reject) => {
+        setTimeout(() => resolve(result * 2), 1000);
+    })
+}).then(result => {
+    console.log(result);
+    return new Promise((resolve, reject) => {
+        setTimeout(() => resolve(result * 2), 1000);
+    })
+})
