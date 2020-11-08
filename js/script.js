@@ -1756,7 +1756,7 @@ new Promise((resolve, reject) => {
 
 //* Thenable объект !ОЧЕНЬ ВАЖНО
 
-class Thenable {
+class Thenablee {
     constructor(num) {
         this.num = num;
     }
@@ -1769,7 +1769,7 @@ class Thenable {
 
 new Promise (resolve => resolve(2))
 .then(result => {
-    return new Thenable(result);
+    return new Thenablee(result);
 }).then(result => console.log(result))
 
 new Promise((resolve, reject) => {
@@ -1782,6 +1782,22 @@ setTimeout(() => resolve(2), 1000);
 }).then(result => {
     console.log(result);
     return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(result * 2), 1000);
     })
 })
+
+class Thenable {
+    constructor(num) {
+        this.num = num;
+    }
+    then(resolve, reject) {
+        console.log(resolve); // function() { native code }
+      // будет успешно выполнено с аргументом this.num*2 через 1 секунду
+      setTimeout(() => resolve(this.num * 2), 1000); // (**)
+    }
+}
+
+new Promise(resolve => resolve(1))
+    .then(result => {
+      return new Thenable(result); // (*)
+    })
+.then(result => console.log(reuslt)); 
