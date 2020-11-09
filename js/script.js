@@ -1796,8 +1796,12 @@ class Thenable {
     }
 }
 
-new Promise(resolve => resolve(1))
-    .then(result => {
-      return new Thenable(result); // (*)
-    })
-.then(result => console.log(reuslt)); 
+fetch('https://no-such-server.bla')
+.then(response => response.json)
+.catch(err => console.log(err));
+
+new Promise((resolve, reject) => {
+    resolve("OK");
+}).then(result => {
+    blalbla();
+}).catch(err => console.log(err))
