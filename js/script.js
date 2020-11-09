@@ -1767,23 +1767,26 @@ class Thenablee {
     }
 }
 
-new Promise (resolve => resolve(2))
-.then(result => {
-    return new Thenablee(result);
-}).then(result => console.log(result))
+/*
+*new Promise (resolve => resolve(2))
+*.then(result => {
+*    return new Thenablee(result);
+*}).then(result => console.log(result))
 
-new Promise((resolve, reject) => {
-setTimeout(() => resolve(2), 1000);
-}).then(result => {
-    console.log(result);
-    return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(result * 2), 1000);
-    })
-}).then(result => {
-    console.log(result);
-    return new Promise((resolve, reject) => {
-    })
-})
+*new Promise((resolve, reject) => {
+*setTimeout(() => resolve(2), 1000);
+*}).then(result => {
+*    console.log(result);
+*    return new Promise((resolve, reject) => {
+*        setTimeout(() => resolve(result * 2), 1000);
+*    })
+*}).then(result => {
+*    console.log(result);
+*    return new Promise((resolve, reject) => {
+*    })
+*})
+
+*/
 
 class Thenable {
     constructor(num) {
@@ -1796,12 +1799,44 @@ class Thenable {
     }
 }
 
-fetch('https://no-such-server.bla')
-.then(response => response.json)
-.catch(err => console.log(err));
+/*
+*fetch('https://no-such-server.bla')
+*.then(response => response.json)
+*.catch(err => console.log(err));
+*/
 
 new Promise((resolve, reject) => {
     resolve("OK");
 }).then(result => {
     blalbla();
-}).catch(err => console.log(err))
+}).catch(err => console.log(err));
+
+new Promise((resolve, reject) => {
+    throw new Error("Ошибка!");
+}).catch(err => {
+    console.log("Ошибка обработана");
+}).then(() => console.log("Управление перейдёт в следующий then"))
+
+new Promise((resolve, rejct) => {
+  //  throw new Error("Ошибка!");
+}).catch(error => {
+    if(error instanceof URIError) {
+        console.log("Ошибка обработана");
+    } else {
+        console.log("Не могу обработуть ошибку");
+        throw error;
+    }
+}).then(() => {
+    console.log(`Неизвестная ошибка: ${error}`);
+});
+
+window.addEventListener('unhandledrejection', function(event) {
+    // объект события имеет два специальных свойства:
+    console.log(event.promise); // [object Promise] - промис, который сгенерировал ошибку
+    console.log(event.reason); // Error: Ошибка! - объект ошибки, которая не была обработана
+});
+/*
+*new Promise(function() {
+*throw new Error("Ошибка!");
+*}); // нет обработчика ошибок
+*/
