@@ -1891,3 +1891,37 @@ async function funcFetch() {
     }
 }
 funcFetch();
+
+//? Tasks
+
+function delay(ms) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(`Промис выполнился через ${ms / 1000} секунды`)
+        }, ms);
+    })
+}
+
+delay(2000).then(result => console.log(result));
+
+async function loadJson(url) {
+    let response = await fetch(url);
+    if (response.status == 200) {
+        return response.json();
+    } else {
+        throw new Error(response.status);
+    }
+}
+
+console.log(loadJson("https://api.github.com/users/ashtonbro"));
+
+async function wait() {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    return 10;
+}
+
+function getResult() {
+    wait().then(result => console.log(result))
+}
+
+getResult();
