@@ -1730,10 +1730,10 @@ promise.then(result => console.log(result));
 
 function loadScript(src) {
     return new Promise((resolve, reject) => {
-        let script = document.createElement('script');
+        let script = document.createElement('anotherScript');
         script.src = src;
 
-        sctipt.load = () => resolve(script);
+        script.load = () => resolve(script);
         script.onerror = () => reject(new Error(`Ошибка загрузки скрипта ${src}`));
 
         document.head.append(script);
@@ -1840,3 +1840,16 @@ window.addEventListener('unhandledrejection', function(event) {
 *throw new Error("Ошибка!");
 *}); // нет обработчика ошибок
 */
+
+let loadScriptPromise = (src) => {
+    return new Promise((resolve, reject) => {
+        loadScript(src, (err, script) => {
+            if(err) reject(err)
+            else resolve(script);
+        });
+    })
+}
+
+loadScriptPromise('../js/anotherScript.js')
+.then(result => console.log(result))
+.catch(err => console.log(new Error(err)));
