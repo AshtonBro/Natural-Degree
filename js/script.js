@@ -1853,3 +1853,41 @@ let loadScriptPromise = (src) => {
 loadScriptPromise('../js/anotherScript.js')
 .then(result => console.log(result))
 .catch(err => console.log(new Error(err)));
+
+class ThenableObj {
+    constructor(num) {
+        this.num = num;
+    }
+    then(resolve, reject) {
+        console.log(resolve);
+        setTimeout(() => {
+            resolve(this.num * 2)
+        }, 1000);
+    }
+};
+
+async function asyncFanc() {
+    let result = await new ThenableObj(6);
+    console.log(result);
+}
+
+asyncFanc();
+
+class Waiter {
+    async wait() {
+        return await Promise.resolve(1);
+    }
+}
+
+new Waiter().wait().then(result => console.log(result));
+
+async function funcFetch() {
+    try {
+        let response = await fetch('https://api.github.com/users/ashtonbro');
+        let user = await response.json();
+        console.log(user);
+    } catch (error) {
+        console.log(error);
+    }
+}
+funcFetch();
