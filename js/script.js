@@ -2,7 +2,7 @@
 
 function showFile(input) {
     let file = input.files[0];
-   
+
     let reader = new FileReader();
     reader.readAsText(file);
 
@@ -57,4 +57,13 @@ async function postMethod(data) {
 
 postMethod(user);
 
+let controller = new AbortController();
+let signal = controller.signal;
+
+// срабатывает при вызове controller.abort()
+signal.addEventListener('abort', () => alert("отмена!"));
+
+controller.abort(); // отмена!
+
+alert(signal.aborted)
 
