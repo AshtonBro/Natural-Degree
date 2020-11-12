@@ -67,3 +67,18 @@ controller.abort(); // отмена!
 
 alert(signal.aborted)
 
+// прервать через 1 секунду
+let controller = new AbortController();
+setTimeout(() => controller.abort(), 1000);
+
+try {
+    let response = await fetch('/article/fetch-abort/demo/hang', {
+        signal: controller.signal
+    });
+    } catch(err) {
+    if (err.name == 'AbortError') { // обработать ошибку от вызова abort()
+        alert("Прервано!");
+    } else {
+        throw err;
+    }
+}
