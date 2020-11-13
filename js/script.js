@@ -82,3 +82,16 @@ try {
         throw err;
     }
 }
+
+let urls = [...]; // список URL для параллельных fetch
+
+let controller = new AbortController();
+
+let fetchJobs = urls.map(url => fetch(url, {
+    signal: controller.signal
+}));
+
+let results = await Promise.all(fetchJobs);
+
+// если откуда-то вызвать controller.abort(),
+// то это прервёт все вызовы fetch
