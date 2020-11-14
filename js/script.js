@@ -92,6 +92,3 @@ let fetchJobs = urls.map(url => fetch(url, {
 }));
 
 let results = await Promise.all(fetchJobs);
-
-// если откуда-то вызвать controller.abort(),
-// то это прервёт все вызовы fetch
