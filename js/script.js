@@ -68,12 +68,12 @@ controller.abort(); // отмена!
 alert(signal.aborted)
 
 // прервать через 1 секунду
-let controller = new AbortController();
+let controller3 = new AbortController();
 setTimeout(() => controller.abort(), 1000);
 
 try {
     let response = await fetch('/article/fetch-abort/demo/hang', {
-        signal: controller.signal
+        signal: controller3.signal
     });
     } catch(err) {
     if (err.name == 'AbortError') { // обработать ошибку от вызова abort()
@@ -85,10 +85,18 @@ try {
 
 let urls = [...]; // список URL для параллельных fetch
 
-let controller = new AbortController();
+let controller2 = new AbortController();
 
 let fetchJobs = urls.map(url => fetch(url, {
     signal: controller.signal
 }));
 
 let results = await Promise.all(fetchJobs);
+
+let response = await fetch('https://site.com/service.json', {
+  method: 'PATCH',
+  headers: {
+    'Content-Type': 'application/json',
+    'API-Key': 'secret'
+  }
+});
