@@ -61,18 +61,18 @@ let controller = new AbortController();
 let signal = controller.signal;
 
 // срабатывает при вызове controller.abort()
-signal.addEventListener('abort', () => alert("отмена!"));
+signal.addEventListener('abort', () => console.log("отмена!"));
 
 controller.abort(); // отмена!
 
-alert(signal.aborted)
+console.log(signal.aborted);
 
 // прервать через 1 секунду
 let controller3 = new AbortController();
 setTimeout(() => controller.abort(), 1000);
 
 try {
-    let response = await fetch('/article/fetch-abort/demo/hang', {
+    let response = fetch('/article/fetch-abort/demo/hang', {
         signal: controller3.signal
     });
     } catch(err) {
@@ -83,20 +83,45 @@ try {
     }
 }
 
-let urls = [...]; // список URL для параллельных fetch
+// let urls = [...]; // список URL для параллельных fetch
 
-let controller2 = new AbortController();
+// let controller2 = new AbortController();
 
-let fetchJobs = urls.map(url => fetch(url, {
-    signal: controller.signal
-}));
+// let fetchJobs = urls.map(url => fetch(url, {
+//     signal: controller.signal
+// }));
 
-let results = await Promise.all(fetchJobs);
+// let results = await Promise.all(fetchJobs);
 
-let response = await fetch('https://site.com/service.json', {
-  method: 'PATCH',
-  headers: {
-    'Content-Type': 'application/json',
-    'API-Key': 'secret'
-  }
-});
+// let response = await fetch('https://site.com/service.json', {
+//     method: 'PATCH',
+//     headers: {
+//     'Content-Type': 'application/json',
+//     'API-Key': 'secret'
+//     }
+// });
+
+let userNames = ['AshtonBro', 'iliakan', 'Max', '22sd'];
+
+const getUsers = async (userNames) => {
+    let data = [];
+    for(let userName of userNames) {
+        let response = await fetch(`https://api.github.com/users/${userName}`)
+        .then(response => {
+            if(response.status != 200) {
+                return null;
+            } else {
+                return response.json();
+            }
+        }, reject => {
+            return new Error(`Юзер не найден: ${reject.error}`)
+        })
+        data.push(response);
+    }
+
+    let result = await Promise.all(data);
+    return result;
+    
+};
+
+console.log('getUsers(userNames);: ', getUsers(userNames));
