@@ -126,7 +126,7 @@ const getUsers = async (userNames) => {
 
 //* Cookie
 
-console.log('getUsers(userNames);: ', getUsers(userNames));
+console.log('userNames: ', getUsers(userNames));
 
 document.cookie = "user = Jhon";
 console.log(document.cookie);
@@ -151,4 +151,16 @@ for(let key in localStorage) {
     }
     console.log(`${key}: ${localStorage.getItem(key)}`);
 }
+
+localStorage.user = JSON.stringify({name: "Sam"});
+let localUser = JSON.parse(localStorage.user);
+console.log(localUser);
+
+window.onstorage = event => {
+    if(event.key != 'now') return;
+    console.log(event.key + ' : ' + event.value + ' at ' + event.url);
+};
+
+localStorage.setItem('now', Date.now());
+localStorage.clear();
 
