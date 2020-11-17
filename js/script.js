@@ -1,5 +1,6 @@
 'use strict'
 
+
 function showFile(input) {
     let file = input.files[0];
 
@@ -163,4 +164,3 @@ window.onstorage = event => {
 
 localStorage.setItem('now', Date.now());
 localStorage.clear();
-
