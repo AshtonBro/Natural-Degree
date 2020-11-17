@@ -101,7 +101,7 @@ try {
 //     }
 // });
 
-let userNames = ['AshtonBro', 'iliakan', 'Max', '22sd'];
+let userNames = ['AshtonBro', 'iliakan', 'Max', '22'];
 
 const getUsers = async (userNames) => {
     let data = [];
@@ -124,4 +124,14 @@ const getUsers = async (userNames) => {
     
 };
 
+//* Cookie
+
 console.log('getUsers(userNames);: ', getUsers(userNames));
+
+document.cookie = "user = Jhon";
+console.log(document.cookie);
+
+let name = 'username';
+let value = 'John Smith'
+
+document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
