@@ -1,6 +1,7 @@
 'use strict';
 
-const inputFile = document.querySelector('.input-file');
+const inputFile = document.querySelector('.input-file'),
+elemDOM = document.getElementById('elem');
 
 // родителем <body> является <html>
 console.log( document.body.parentNode === document.documentElement ); // выведет true
@@ -18,3 +19,14 @@ Element.prototype.sayHi = function() {
 document.documentElement.sayHi(); // Hello, I'm HTML
 document.body.sayHi(); // Hello, I'm BODY
 inputFile.sayHi();
+
+inputFile.setAttribute('id', 'inputId');
+console.log(inputFile.attributes[0].nodeValue = 'input-drop');
+
+console.log(elemDOM.getAttribute('About'));
+console.log(elemDOM.outerHTML);
+
+for(let attr of elemDOM.attributes) {
+    console.log(`${attr.name} = ${attr.value}`);
+}
+
