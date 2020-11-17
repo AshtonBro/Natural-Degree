@@ -135,3 +135,20 @@ let name = 'username';
 let value = 'John Smith'
 
 document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+
+//* localStorage
+
+localStorage.setItem('test', 1)
+
+for(let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    console.log(`${key}: ${localStorage.getItem(key)}`);
+}
+
+for(let key in localStorage) {
+    if (!localStorage.hasOwnProperty(key)) {
+      continue; // пропустит такие ключи, как "setItem", "getItem" и так далее
+    }
+    console.log(`${key}: ${localStorage.getItem(key)}`);
+}
+
