@@ -45,8 +45,21 @@ inputBox.after(div);
 //* <ol>
 //*         <----ol.prepend
 //*     <li>0</li>
-//*     <li>1</li>
+//*     <li>1</li>          (...nodes or string)
 //*     <li>2</li>
 //*         <----ol.append
 //* </ol>
 //*        <----ol.after
+
+div.insertAdjacentHTML('beforebegin', '<p>Привет</p>');
+div.insertAdjacentHTML('afterend', '<p>Пока</p>');
+
+//*        <----beforebegin
+//* <ol>
+//*         <----afterbegin
+//*     <li>0</li>
+//*     <li>1</li>           ol.insertAdjacentHTML(*, html)
+//*     <li>2</li>
+//*         <----beforend
+//* </ol>
+//*        <----afterend
