@@ -4,7 +4,6 @@ const inputFile = document.querySelector('.input-file'),
 elemDOM = document.getElementById('elem'),
 inputBox = document.querySelector('.input-box'),
 body = document.querySelector('body');
-console.log('body: ', body);
 
 // родителем <body> является <html>
 console.log( document.body.parentNode === document.documentElement ); // выведет true
@@ -75,4 +74,9 @@ background-color: yellow;
 width: 100px;
 text-align: center;
 `;
+
+
+const divUser = document.querySelector('.user'),
+ul = document.getElementsByTagName('ul'),
+li = document.getElementsByTagName('li');
 
