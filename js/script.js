@@ -63,3 +63,16 @@ div.insertAdjacentHTML('afterend', '<p>Пока</p>');
 //*         <----beforend
 //* </ol>
 //*        <----afterend
+
+//* node.remove()
+setTimeout(() => div.remove(), 5000);
+
+body.style.backgroundColor = 'lightgreen';
+
+div.style.cssText = `
+color: red !important;
+background-color: yellow;
+width: 100px;
+text-align: center;
+`;
+
