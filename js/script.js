@@ -78,5 +78,7 @@ text-align: center;
 
 const divUser = document.querySelector('.user'),
 ul = document.getElementsByTagName('ul'),
-li = document.getElementsByTagName('li');
+li = document.getElementsByTagName('li'),
+td = document.querySelectorAll('td');
+console.log('td: ', td[0].innerHTML);
 
