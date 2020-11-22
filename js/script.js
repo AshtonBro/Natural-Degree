@@ -87,3 +87,17 @@ for (let i = 0; i < table.rows.length; i++) {
     row.cells[i].style.backgroundColor = 'red';
 }
 
+const ageTable = document.getElementById('age-table'),
+    ageList = ageTable.getElementsByTagName('label'),
+    tdAge = ageTable.firstElementChild.firstElementChild,
+    formSearch = document.getElementsByName('search')[0],
+    firstInput = formSearch.getElementsByTagName('input')[0],
+    inputs = formSearch.querySelectorAll('input'),
+    lastInput = inputs[inputs.length-1];
+    console.log('lastInput: ', lastInput);
+    console.log('firstInput: ', firstInput);
+    console.log('formSearch: ', formSearch);
+for(let elem of ageList) {
+    console.log(elem);
+}
+
