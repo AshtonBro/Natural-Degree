@@ -77,8 +77,13 @@ text-align: center;
 
 
 const divUser = document.querySelector('.user'),
-ul = document.getElementsByTagName('ul'),
-li = document.getElementsByTagName('li'),
-td = document.querySelectorAll('td');
-console.log('td: ', td[0].innerHTML);
+    ul = document.getElementsByTagName('ul'),
+    li = document.getElementsByTagName('li'),
+    td = document.querySelectorAll('td'),
+    table = document.querySelector('.table');
+
+for (let i = 0; i < table.rows.length; i++) {
+    let row = table.rows[i];
+    row.cells[i].style.backgroundColor = 'red';
+}
 
