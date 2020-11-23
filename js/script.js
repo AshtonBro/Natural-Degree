@@ -123,9 +123,31 @@ const fullElem = document.getElementById('ol-elem'),
     ulTheList = document.querySelector('.ul-the-list');
 
 const clearElements = (elem) => {
-    for(let el of elem.children ) {
-        el.textContent  = 'Удалён';
+    if(elem.childElementCount > 0) {
+        for(let el of elem.children ) {
+            el.textContent  = 'Удалён';
+        }
+    } else {
+        elem.forEach(element => {
+            element.textContent = 'Удалён not Iterable';
+        });
     }
 };
 
 clearElements(fullElem);
+
+const createList = document.querySelector('.create-list');
+
+const createElem = (elem) => {
+    while (true) {
+        let text = prompt('Введите текст для элемента списка', '');
+        if (!text) {
+            break;
+        }
+        let li = document.createElement('li');
+        li.textContent = text;
+        elem.append(li);
+    }
+};
+
+//createElem(createList);
