@@ -78,10 +78,10 @@ text-align: center;
 
 const divUser = document.querySelector('.user'),
     ul = document.getElementsByTagName('ul'),
-    li = document.getElementsByTagName('li'),
+    li = document.querySelectorAll('li'),
     td = document.querySelectorAll('td'),
     table = document.querySelector('.table');
-
+    console.log('li: ', li);
 for (let i = 0; i < table.rows.length; i++) {
     let row = table.rows[i];
     row.cells[i].style.backgroundColor = 'red';
@@ -101,3 +101,19 @@ for(let elem of ageList) {
     console.log(elem);
 }
 
+for(let elem of li) {
+    let elemNodeValue = elem.firstChild.nodeValue;
+    let count = elem.getElementsByTagName('li').length;
+    console.log(elemNodeValue + ' ' + count);
+}
+
+const aLinks = document.querySelectorAll('a');
+console.log('aLinks: ', aLinks);
+
+for(let link of aLinks) {
+    let href = link.getAttribute('href');
+    if(!href) continue;
+    if(!href.includes('://')) continue;
+    if(href.includes('http://internal.com')) continue;
+    link.style.color = 'orange';
+}
