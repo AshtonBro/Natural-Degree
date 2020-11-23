@@ -80,6 +80,7 @@ const divUser = document.querySelector('.user'),
     ul = document.getElementsByTagName('ul'),
     li = document.querySelectorAll('li'),
     td = document.querySelectorAll('td'),
+    uls = document.querySelectorAll('ul'),
     table = document.querySelector('.table');
     console.log('li: ', li);
 for (let i = 0; i < table.rows.length; i++) {
@@ -117,3 +118,14 @@ for(let link of aLinks) {
     if(href.includes('http://internal.com')) continue;
     link.style.color = 'orange';
 }
+
+const fullElem = document.getElementById('ol-elem'),
+    ulTheList = document.querySelector('.ul-the-list');
+
+const clearElements = (elem) => {
+    for(let el of elem.children ) {
+        el.textContent  = 'Удалён';
+    }
+};
+
+clearElements(fullElem);
