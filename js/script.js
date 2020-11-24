@@ -151,3 +151,27 @@ const createElem = (elem) => {
 };
 
 //createElem(createList);
+
+//* createTree
+
+let data = {
+    "Рыбы": {
+        "форель": {},
+        "лосось": {}
+    },
+    
+    "Деревья": {
+        "Огромные": {
+        "секвойя": {},
+        "дуб": {}
+        },
+        "Цветковые": {
+        "яблоня": {},
+        "магнолия": {}
+        }
+    }
+};
+
+for(let elem of Object.entries(data)) {
+    createList.append(elem);
+}
