@@ -172,6 +172,22 @@ let data = {
     }
 };
 
-for(let elem of Object.entries(data)) {
-    createList.append(elem);
-}
+const createTreeDom = (object) => {
+    let ul = document.createElement('ul');
+
+    for(let key in object) {
+        let li = document.createElement('li');
+        li.innerHTML = key;
+
+        let childrenUl = createTreeDom(object[key]);
+        if(childrenUl) {
+            li.append(childrenUl);
+        }
+        ul.append(li);
+    }
+    return ul;
+};
+
+
+let container = document.querySelector('.container');
+container.append(createTreeDom(data));
