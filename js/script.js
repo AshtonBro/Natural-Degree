@@ -179,15 +179,24 @@ const createTreeDom = (object) => {
         let li = document.createElement('li');
         li.innerHTML = key;
 
-        let childrenUl = createTreeDom(object[key]);
-        if(childrenUl) {
-            li.append(childrenUl);
+        let deepUl = createTreeDom(object[key]);
+        if(deepUl) {
+            li.append(deepUl);
         }
         ul.append(li);
     }
     return ul;
 };
 
-
 let container = document.querySelector('.container');
 container.append(createTreeDom(data));
+
+const exampleDiv = document.querySelector('.example');
+console.log(exampleDiv.offsetParent.id);
+console.log(exampleDiv.offsetTop);
+console.log(exampleDiv.offsetHeight);
+console.log(exampleDiv.clientTop);
+console.log(exampleDiv.scrollHeight);
+
+
+
