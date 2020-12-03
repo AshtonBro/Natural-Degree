@@ -223,3 +223,15 @@ alert( result.length ); // 1
 // Дополнительная информация:
 alert( result.index );  // 0 (позиция совпадения)
 alert( result.input );  // Любо, братцы, любо! (исходная строка)
+
+let matches = "JavaScript".match(/HTML/) || [];
+
+if (!matches.length) {
+  alert("Совпадений нет"); // теперь работает
+}
+
+// без флага g
+alert( "We will, we will".replace(/we/i, "I") ); // I will, we will
+
+// с флагом g
+alert( "We will, we will".replace(/we/ig, "I") ); // I will, I will
