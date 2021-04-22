@@ -66,7 +66,7 @@ div.insertAdjacentHTML('afterend', '<p>Пока</p>');
 //* node.remove()
 setTimeout(() => div.remove(), 5000);
 
-body.style.backgroundColor = 'lightgreen';
+//body.style.backgroundColor = 'lightgreen';
 
 div.style.cssText = `
 color: red !important;
@@ -197,57 +197,63 @@ console.log(exampleDiv.offsetTop);
 console.log(exampleDiv.offsetHeight);
 console.log(exampleDiv.clientTop);
 console.log(exampleDiv.scrollHeight);
+let ball = document.createElement('div');
 
-ball.style.left = Math.round(field.clientWidth / 2  - ball.offsetWidth / 2) + 'px';
-ball.style.top = Math.round(field.clientHeight / 2 - ball.offsetHeight / 2) + 'px';
+ball.style.left = Math.round(exampleDiv.clientWidth / 2  - ball.offsetWidth / 2) + 'px';
+ball.style.top = Math.round(exampleDiv.clientHeight / 2 - ball.offsetHeight / 2) + 'px';
 
-formElem.onsubmit = async (e) => {
-    e.preventDefault();
+const searchPerson = document.querySelector('.search-person'),
 
-    let response = await fetch('/article/formdata/post/user', {
-      method: 'POST',
-      body: new FormData(formElem)
-    });
 
-    let result = await response.json();
+// searchPerson.onsubmit = async (e) => {
+//     e.preventDefault();
 
-    alert(result.message);
+//     let response = await fetch('/article/formdata/post/user', {
+//       method: 'POST',
+//       body: new FormData(searchPerson)
+//     });
 
-    let str = "Любо, братцы, любо!";
+//     let result = await response.json();
+
+//     console.log(result.message);
+// }
+
+
+str = "Любо, братцы, любо!";
 
 let result = str.match(/любо/i); // без флага g
 
-alert( result[0] );     // Любо (первое совпадение)
-alert( result.length ); // 1
+console.log( result[0] );     // Любо (первое совпадение)
+console.log( result.length ); // 1
 
 // Дополнительная информация:
-alert( result.index );  // 0 (позиция совпадения)
-alert( result.input );  // Любо, братцы, любо! (исходная строка)
+console.log( result.index );  // 0 (позиция совпадения)
+console.log( result.input );  // Любо, братцы, любо! (исходная строка)
 
 let matches = "JavaScript".match(/HTML/) || [];
 
 if (!matches.length) {
-  alert("Совпадений нет"); // теперь работает
+  console.log("Совпадений нет"); // теперь работает
 }
 
 // без флага g
-alert( "We will, we will".replace(/we/i, "I") ); // I will, we will
+console.log( "We will, we will".replace(/we/i, "I") ); // I will, we will
 
 // с флагом g
-alert( "We will, we will".replace(/we/ig, "I") ); // I will, I will
+console.log( "We will, we will".replace(/we/ig, "I") ); // I will, I will
 
-let str = "+7(903)-123-45-67";
+let str2 = "+7(903)-123-45-67";
 
 let regexp = /\d/g;
 
-alert( str.match(regexp) ); // массив совпадений: 7,9,0,3,1,2,3,4,5,6,7
+console.log( str2.match(regexp) ); // массив совпадений: 7,9,0,3,1,2,3,4,5,6,7
 
 // и можно сделать из них уже чисто цифровой номер телефона
-alert( str.match(regexp).join('') ); // 79035419441
+console.log( str2.match(regexp).join('') ); // 79035419441
 
-alert( "1 - 5".match(/\d - \d/) ); // 1 - 5, теперь работает
+console.log( "1 - 5".match(/\d - \d/) ); // 1 - 5, теперь работает
 // или можно использовать класс \s:
-alert( "1 - 5".match(/\d\s-\s\d/) ); // 1 - 5, тоже работает
+console.log( "1 - 5".match(/\d\s-\s\d/) ); // 1 - 5, тоже работает
 
 // \d – цифры.
 // \D – не цифры.
@@ -255,5 +261,5 @@ alert( "1 - 5".match(/\d\s-\s\d/) ); // 1 - 5, тоже работает
 // \S – все, кроме \s.
 // \w – латиница, цифры, подчёркивание '_'.
 // \W – все, кроме \w.
-// . – любой символ, если с флагом регулярного выражения s, в противном случае любой символ, кроме перевода строки \n.
-
+// . – любой символ, если с флагом регулярного выражения s,
+// в противном случае любой символ, кроме перевода строки \n.
