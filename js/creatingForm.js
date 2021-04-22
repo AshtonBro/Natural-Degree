@@ -1,4 +1,4 @@
-let data = {
+let metaData = {
             method: "POST",
             action: "register.php",
             submit: "Зарегистрироваться",
@@ -38,7 +38,7 @@ let data = {
                 }]
         }
 
-const container = document.querySelector('.container');
+const containerForm = document.querySelector('.container');
 
 function createForm(object) {
     const form = document.createElement('div');
@@ -169,8 +169,8 @@ function drawind(array, parrentNode) {
     `;
 }
 
-const form = createForm(data);
-const fieldArray = getFields(data)
+const form = createForm(metaData);
+const fieldArray = getFields(metaData)
 drawind(fieldArray, form);
-container.append(form);
+containerForm.append(form);
 
