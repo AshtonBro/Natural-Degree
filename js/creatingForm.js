@@ -124,7 +124,6 @@ function drawTextarea(object, parentNode) {
 
 function drawind(array, parrentNode) {
     array.forEach(element => {
-        console.log('element: ', element.type);
         const wrap = document.createElement('div');
         wrap.setAttribute('id', `_${element.name}`);
         
