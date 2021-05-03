@@ -75,7 +75,6 @@ width: 100px;
 text-align: center;
 `;
 
-
 const divUser = document.querySelector('.user'),
     ul = document.getElementsByTagName('ul'),
     li = document.querySelectorAll('li'),
@@ -151,7 +150,6 @@ const createElem = (elem) => {
 };
 
 //createElem(createList);
-
 //* createTree
 
 let data = {
